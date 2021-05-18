@@ -1,0 +1,39 @@
+
+  <div class="contenedor" >
+    <mat-card class="container" >
+      <div class="imgcontainer">
+        <img src="../../../assets/login.png" alt="Avatar" class="avatar" style="width: 200px;" >
+      </div>
+      <div mat-card-avatar class="example-header-image"></div>
+      <form class="example-form">
+       
+        <mat-form-field style="width: 40%; margin-right: 10%;" >
+            <mat-label  style="color: #306881;" >Nombre</mat-label>
+            <input  style="color: black;" matInput type="text" [(ngModel)]="usuario.nombre" name="nombre">
+          </mat-form-field>
+          <mat-form-field style="width: 40%;" >
+            <mat-label  style="color: #306881; margin-right: 0rem;" >Apellido</mat-label>
+            <input  style="color: black;" matInput type="text" [(ngModel)]="usuario.apellido" name="apellido">
+          </mat-form-field>
+          <mat-form-field style="width: 40%; margin-right: 10%;">
+            <mat-label  style="color: #306881;" >Dni</mat-label>
+            <input  style="color: black;" matInput type="number" [(ngModel)]="usuario.dni" name="dni">
+          </mat-form-field>
+        <mat-form-field style="width: 40%;" >
+          <mat-label  style="color: #306881;" >Email</mat-label>
+          <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.email" name="email">
+        </mat-form-field>
+       
+        <mat-form-field style="width: 40%; margin-right: 10%;"  >
+          <mat-label  style="color: #306881;">Contraseña</mat-label>
+          <input style="color: black;" matInput type="password" [(ngModel)]="usuario.clave" name="psw">
+        </mat-form-field>
+        <mat-form-field style="width: 40%;" >
+            <mat-label  style="color: #306881;">Repetir Contraseña</mat-label>
+            <input style="color: black;" matInput type="password" [(ngModel)]="clave" name="psw">
+        </mat-form-field>
+        <br>
+        <button style="margin-top: 2rem; width: 90%;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Registrarse</button>
+      </form>
+    </mat-card>
+  </div>

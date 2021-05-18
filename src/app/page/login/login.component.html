@@ -1,0 +1,33 @@
+<mat-toolbar style="background-color: #306881; color: white;" class="expanded-toolbar">
+    <img style="height: 3rem; width: 2rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/login.png" alt="">
+      Iniciar Sesión
+  </mat-toolbar>
+  <div class="contenedor">
+    <mat-card class="container ld ld-blur-in">
+      <div class="imgcontainer">
+        <img src="../../../assets/login.png" alt="Avatar" class="avatar" width="104" >
+      </div>
+      <div mat-card-avatar class="example-header-image"></div>
+      <form class="example-form">
+        <mat-form-field style="width: 100%;" class="full-width-input">
+          <mat-label style="color: #306881;">Seleccione un Usuario</mat-label>
+        <mat-select>
+        <mat-option (click)="onChange(usuario.id)" *ngFor="let usuario of usuarios"value="{{usuario.id}}"> {{usuario.nombre}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+        <mat-form-field style="width: 100%;" class="full-width-input">
+          <mat-label  style="color: #306881;" >Email</mat-label>
+          <input  style="color: black;" matInput type="email" [(ngModel)]="email" name="email">
+        </mat-form-field>
+        <mat-form-field style="width: 100%;"  class="full-width-input">
+          <mat-label  style="color: #306881;">Contraseña</mat-label>
+          <input style="color: black;" matInput type="password" [(ngModel)]="clave" name="psw">
+        </mat-form-field>
+        <br>
+        <button style="margin-top: 2rem; width: 100%;" class="btn btn-block"  mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
+      </form>
+      <br>
+      <h3>¿No tenés usuario?  <a href="/registro">Registrate</a></h3>
+    </mat-card>
+  </div>
+  

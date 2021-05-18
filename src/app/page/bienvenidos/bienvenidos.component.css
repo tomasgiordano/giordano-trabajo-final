@@ -1,0 +1,50 @@
+.container {
+    margin-top: 5rem;
+    display: flex;
+    z-index:999;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: white;
+    -webkit-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    background-image:url('../../../assets/fondo.jpg');
+}
+
+h1{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    font-size: 8vw;
+    margin-top: 11vw;
+    margin-left: 11vw;
+}
+
+h3{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    font-size: 4vw;
+    margin-top: 6vw;
+    margin-left: 11vw;
+}
+
+.right{
+    flex-direction: column;
+    justify-content: end;
+    
+}
+
+.box {
+    display: flex;
+}
+
+.push {
+    margin-left: auto;
+}
