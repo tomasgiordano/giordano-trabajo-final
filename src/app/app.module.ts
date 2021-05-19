@@ -40,6 +40,13 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { HomeComponent } from './page/home/home.component';
 import { AltaAdminComponent } from './page/alta-admin/alta-admin.component';
 import { UsuariosComponent } from './page/usuarios/usuarios.component';
+import { NavComponent } from './components/nav/nav.component';
+import { InicioComponent } from './page/inicio/inicio.component';
+import { ListaComponent } from './components/lista/lista.component';
+import { DetalleUsuarioComponent } from './components/detalle-usuario/detalle-usuario.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
+import { ListaUsuariosComponent } from './page/lista-usuarios/lista-usuarios.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,13 @@ import { UsuariosComponent } from './page/usuarios/usuarios.component';
     RegistroComponent,
     HomeComponent,
     AltaAdminComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    NavComponent,
+    InicioComponent,
+    ListaComponent,
+    DetalleUsuarioComponent,
+    PaginatePipe,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +86,7 @@ import { UsuariosComponent } from './page/usuarios/usuarios.component';
     MatNativeDateModule,
     MatStepperModule,
     MatExpansionModule,
+    MatPaginatorModule,
     FormsModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyDb4GaW-1w6n-vtpPXE5GitKcnimT2iLfk",

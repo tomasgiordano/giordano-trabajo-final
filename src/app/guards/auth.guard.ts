@@ -21,22 +21,21 @@ export class AuthGuard implements CanActivate {
       return this.auth.getUserUid().then(res => {
         user = res;
         
-        if(user != 0 && user!=undefined)
+        if(user != 0 && user!=undefined && user!=null)
         { 
           console.info(user);
           return true;
         }
         else
         {  
-          this.toast.error("Necesitás estar logueado para ingresar a esta ruta","Error");
-          // alert("Necesitás estar logueado para ingresar a esta ruta")
-          this.route.navigate(['/Login']);
+          //this.toast.error("Necesitás estar logueado para ingresar a esta ruta","Error");
+          this.route.navigate(['']);
           return false;
         }
     }).catch(res =>{
       this.toast.error(res,"Error");
      // alert(res);
-      this.route.navigate(['/Login']);
+      this.route.navigate(['']);
       return false;
     })
   }

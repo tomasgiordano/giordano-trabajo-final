@@ -33,7 +33,6 @@ export class AltaAdminComponent implements OnInit {
 
     }
     
-     
   }
 
   validacion()

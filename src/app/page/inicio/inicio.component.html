@@ -1,0 +1,91 @@
+<header>
+    <div class="contenedor ld ld-float-rtl-in">
+      <div class="contenedor_texto">
+          <div class="texto">
+              <h1 class="nombre">{{nombre}} {{apellido}}</h1>
+            <h2 class="profesion">Bienvenido</h2>
+          </div>
+      </div>
+    </div>
+</header>
+<section class="main ">
+  <section class="acerca_de ">
+      <div class="contenedor ld ld-blur-in">
+          <div *ngIf="rol != 'paciente' && rol != 'profesional'" class="foto ld ld-vortex-in">
+              <img class="img" src="../../../assets/login.png" width="250" height="250">
+          </div>
+          <div *ngIf="rol == 'paciente'||rol == 'profesional'" class="foto ld ld-vortex-in">
+            <img class="img" [src]="img1" width="250" height="250">
+        </div>
+          <div id="quien" class="texto">
+            <br>
+              <h3 class="titulo">Clinica OnLine</h3>
+              <br>
+          </div>
+          <p>Somos una clínica y un cuerpo médico comprometidos con la excelencia al servicio integral de nuestros pacientes, bajo los más altos estándares de seguridad y calidad.</p>
+          <hr>
+          <div class="fila">
+            <div id="misTurnos" class="turnos" style="margin-right: 5rem;">
+              <label *ngIf="rol =='paciente'" for="" style="font-size: 2rem;">Mis turnos</label>
+              <label *ngIf="rol!='paciente'" for="" style="font-size: 2rem;"> Turnos</label>
+              <div>
+                  <img style="width: 15rem; height: 15rem;" src="../../../assets/misturnos.png" alt="">
+            </div>
+            </div>
+            <div *ngIf="rol == 'paciente'" id="turnos" class="turnos">
+              <label for="" style="font-size: 2rem;">Solicitar Turno</label>
+              <div style="align-items: center;">
+                <img style="width: 14rem; height: 14rem;" src="../../../assets/turno.png" alt="">
+              </div>
+            </div>
+            <div *ngIf="rol == 'admin'" (click)="altaAdmin()" id="turnos" class="turnos" style="margin-left: 5rem;">
+              <label  for="" style="font-size: 2rem;">Alta Admin</label>
+                    <img style="width: 18rem; height: 18rem;" src="../../../assets/user.png" alt="">
+            </div>
+             <div *ngIf="rol == 'profesional'" id="turnos" class="turnos">
+            <label  for="" style="font-size: 2rem;"> Tus Horarios</label>
+            <img style="width: 18rem; height: 15rem;" src="../../../assets/alarma.png" alt="">
+          </div>
+        </div>
+        <hr>
+          <h3 style="font-size: 34px;line-height: 34px;margin-bottom: 40px;font-weight: 400;font-family: 'Quicksand', sans-serif;color: #306881;text-align: center;">
+            Tu salud es nuetra Prioridad</h3>
+          <p>Nuestra misión es ser líderes en la entrega de cuidados de la salud y en la seguridad de los pacientes, mejorando continuamente la calidad de nuestros servicios, entregando medicina de excelencia.</p>
+      <hr>
+      </div>
+  </section>
+  <section class="trabajos ld ld-blur-in ">
+    <div id="donde" class="contenedor">
+      <h3 class="titulo">¿Donde nos encontramos?</h3>
+      <div class="contenedor_trabajos">
+      <div class="trabajo">
+        <div class="thumb">
+          <img src="../../../assets/Bs.jpg" width="500" height="500" alt="Anuncio Uno">
+            <div class="descripcion">
+              <h3>Buenos Aires</h3>
+            <p class="nombre">Av. Cordoba 3560</p>
+        </div>
+      </div>
+    </div>
+    <div class="trabajo">
+      <div class="thumb" style="height: auto;">
+        <img src="../../../assets//Cordoba.jpg" width="500" height="500" alt="Anuncio Dos">
+          <div class="descripcion">
+            <h3>Córdoba</h3>
+            <p class="nombre">Av.Colón 536</p>
+          </div>
+          </div>
+      </div>
+      <div class="trabajo">
+        <div class="thumb">
+          <img src="../../../assets/tucuman.jpeg" width="500" height="500" alt="Anuncio Tres">
+            <div class="descripcion">
+              <h3>Tucumán</h3>
+                <p class="nombre">Av. San mertin 1780</p>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </section>
+</section>

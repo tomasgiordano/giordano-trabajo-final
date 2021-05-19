@@ -70,21 +70,43 @@ export class AuthService {
   logout()
   {
     this.angularFireAuth.signOut().then(() => {
+      localStorage.clear();
       this.router.navigate(['']);
     })
   }
 
-  login(email: string, password: string)
+  async login(email: string, password: string)
   {
-    return new Promise((resolve, reject) => {
-      this.angularFireAuth.signInWithEmailAndPassword(email, password)
-      .then(user => {
-        this.router.navigate(['home']);
-        resolve(user);
-      }).catch(err => {
-        reject(err);
+    return new Promise(async (resolve, reject) => {
+      try{
+        const user = await this.angularFireAuth.signInWithEmailAndPassword(email, password);
+        const uid: any = await this.getUserUid();
+        console.log(uid);
+        this.db.collection('usuarios').doc(uid).valueChanges().subscribe(({rol, nombre, apellido, estado} )=> {
+
+            if(!estado){
+              this.angularFireAuth.signOut();
+              this.toas.error("Usuario deshabilitado","Error");
+              throw "No valido";
+            }
+            this.router.navigate(['home']);
+            localStorage.setItem('perfil',rol);
+            localStorage.setItem('nombre',nombre);
+            localStorage.setItem('apellido',apellido);
+            resolve(user);
+          
+        })
+      }catch(err){
         this.toas.error("Usuario Inválido","Error");
-      });
+        reject(err);
+      }
+      // this.angularFireAuth.signInWithEmailAndPassword(email, password)
+      // .then(user => {
+      //   this.router.navigate(['home']);
+      //   resolve(user);
+      // }).catch(err => {
+        
+      // });
     })
   }
   
@@ -152,7 +174,7 @@ export class AuthService {
             dni:usuario.dni,
             obraSocial: usuario.obraSocial,
             edad: usuario.edad,
-            estado:1,
+            estado:true,
             img1: usuario.img1,
             img2: usuario.img2
           })
@@ -196,7 +218,7 @@ export class AuthService {
           email: usuario.email,
           rol: usuario.tipo,
           dni:usuario.dni,
-          estado:1, 
+          estado:true, 
           especialidades:especialidades,
           img1: url
           })
@@ -250,7 +272,7 @@ export class AuthService {
           email: usuario.email,
           rol: usuario.rol,
           dni:usuario.dni,
-          estado:1
+          estado:true
         })
         resolve(res);
       })

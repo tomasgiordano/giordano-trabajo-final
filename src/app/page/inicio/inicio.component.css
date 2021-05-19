@@ -245,19 +245,17 @@ font-family: 'Quicksand', sans-serif;
   }
   footer .redes_sociales .contenedor{
     display: flex;
-    justify-content: space-around;
-    
+    justify-content: center;
   }
   footer .redes_sociales a{
         color: white;
         text-align: center;
-        width: 300px;
+        width: 100px;
         font-family: 'Quicksand', sans-serif;
         display: block;
         padding: 15px, 0;
         border-radius: 10%;
-        font-size: 20px;
-        color: white;
+        font-size: 50px;
         margin: 0px 20px;
     }
     footer .redes_sociales .facebook:hover{background:#306881 ;}
@@ -323,4 +321,3 @@ font-family: 'Quicksand', sans-serif;
           color: black;
           text-align: center;
   }
-
