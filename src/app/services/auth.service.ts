@@ -82,7 +82,7 @@ export class AuthService {
         const user = await this.angularFireAuth.signInWithEmailAndPassword(email, password);
         const uid: any = await this.getUserUid();
         console.log(uid);
-        this.db.collection('usuarios').doc(uid).valueChanges().subscribe(({rol, nombre, apellido, estado} )=> {
+        this.db.collection('usuarios').doc(uid).valueChanges().subscribe(({rol, nombre, apellido,img1,estado} )=> {
 
             if(!estado){
               this.angularFireAuth.signOut();
@@ -93,6 +93,7 @@ export class AuthService {
             localStorage.setItem('perfil',rol);
             localStorage.setItem('nombre',nombre);
             localStorage.setItem('apellido',apellido);
+            localStorage.setItem('img1',img1);
             resolve(user);
           
         })
