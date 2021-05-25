@@ -98,12 +98,6 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/homeProfesional.png" alt="">
 
- <h2> <strong>Listado del lado del Profesional<strong> </h2>
-
- 🔹 En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para Aceptar o rechazasr el turno de ser necesitarlo, y otro para obtener mas información del mismo.
-
- <img src="/src/assets/readme/listadoProfesional.png" alt="">
-
  <h2> <strong>Horarios de Profesional<strong> </h2>
 
 🔹 En este apartado nos encontraremos el menu en el cual el Profesional puede agregar o eliminar días y horarios de atención.
@@ -131,8 +125,6 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 🔹 Desde esta pagina de inicio vamos a poder ver un listado de usuarios, y crear nuevos administradores.
 
  <img src="/src/assets/readme/homeAdmin.png" alt="">
-
-<h2> <strong>Listado de usuarios<strong> </h2>
   
 🔹 Desde aqui, los administradores ademas de poder ver el listado de usuarios, pueden habilitar o deshabilitar profesionales.
   
