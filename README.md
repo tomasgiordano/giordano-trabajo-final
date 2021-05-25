@@ -116,6 +116,16 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/turnoDetalle.png" alt="">
   
+ <h2> <strong>Gestion de turnos<strong> </h2>
+   
+ 🔹 Desde el lado de profesionales como pacientes se podra gestionar los turnos (ver la informacion del mismo, rechazarlo, aceptarlo, cancelarlo).
+   
+  <img src="/src/assets/readme/gestionTurnos.png" alt="">
+ 
+  🔹 Tambien calificar, agregar comentarios y ver los detalles del mismo.
+   
+  <img src="/src/assets/readme/detalleTurnos.png" alt="">
+  
 <h2> <strong>Home Administrador<strong> </h2>
 
 🔹 Desde esta pagina de inicio vamos a poder ver un listado de usuarios, y crear nuevos administradores.
