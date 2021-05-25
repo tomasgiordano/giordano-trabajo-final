@@ -67,7 +67,7 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/registroProfesional.png" alt="">
 
- ## Ingreso a la Web
+ ## Login
 
  🔹 Una vez verificado nuestro correo electrónico, podremos ingresar con nuestro email y contraseña.
 
