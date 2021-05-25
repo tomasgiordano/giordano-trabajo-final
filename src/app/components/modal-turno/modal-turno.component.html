@@ -4,7 +4,7 @@
       <div *ngIf="!cancelar && !rechazar" style="margin-top: 3rem;" class="container">
         
         <mat-form-field *ngIf="user.rol == 'paciente'" style="width: 100%; " class="full-width-input">
-          <mat-label style="color: #c2185b;">Califique el servicio de 1 a 5</mat-label>
+          <mat-label style="color: #306881;">Califique el servicio de 1 a 5</mat-label>
           <mat-select  (change)="cargarDatos()" [(ngModel)]="turno.calificacionPaciente" [ngModelOptions]="{standalone: true}" > 
               
             <mat-option *ngFor="let item of calificaciones"  [value]="item"><strong style="color: orange;">{{item|calificacion}}</strong></mat-option>
@@ -14,7 +14,7 @@
           
        </mat-form-field>  
        <mat-form-field  *ngIf="user.rol == 'profesional'" style="width: 100%; " class="full-width-input">
-        <mat-label style="color: #c2185b;"> Calificar al paciente de 1 a 5</mat-label>
+        <mat-label style="color: #306881;"> Calificar al paciente de 1 a 5</mat-label>
         <mat-select   [(ngModel)]="turno.calificacionProfesional" [ngModelOptions]="{standalone: true}" > 
             
           <mat-option *ngFor="let item of calificaciones"  [value]="item"><strong style="color: orange;">{{item|calificacion}}</strong></mat-option>
@@ -31,28 +31,28 @@
     </mat-form-field> --> 
 
     <mat-form-field style="width: 100%; " *ngIf="user.rol == 'profesional'">
-     <mat-label style="color: #c2185b;">Temperatura del Paciente</mat-label>
+     <mat-label style="color: #306881;">Temperatura del Paciente</mat-label>
       <input [(ngModel)]="temperatura" matInput placeholder="Temperatura" type="number" value="hola" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
      <mat-form-field style="width: 100%; " *ngIf="user.rol == 'profesional'">
-      <mat-label style="color: #c2185b;">Edad del Paciente</mat-label>
+      <mat-label style="color: #306881;">Edad del Paciente</mat-label>
        <input [(ngModel)]="edad" matInput placeholder="edad" type="number" value="value" [ngModelOptions]="{standalone: true}">
      </mat-form-field>
 
      <mat-form-field style="width: 100%; " *ngIf="user.rol == 'profesional'">
-      <mat-label style="color: #c2185b;">Presión del Paciente</mat-label>
+      <mat-label style="color: #306881;">Presión del Paciente</mat-label>
        <input [(ngModel)]="presion" matInput placeholder="Presión" type="number" value="chau" [ngModelOptions]="{standalone: true}">
      </mat-form-field>  
 
 
      <div style="margin-left: 0.8rem;" id="extras" *ngFor="let nuevoItem of listaDinamicos" class="row">
       <mat-form-field style="width: 40%; " *ngIf="user.rol == 'profesional'">
-        <mat-label style="color: #c2185b;">Dato Agregado</mat-label>
+        <mat-label style="color: #306881;">Dato Agregado</mat-label>
          <input [(ngModel)]="nuevoItem.propiedad" matInput  type="text" value="chau" [ngModelOptions]="{standalone: true}">
        </mat-form-field> 
        <mat-form-field style="width: 40%; margin-left: 5%; " *ngIf="user.rol == 'profesional'">
-        <mat-label style="color: #c2185b;">Valor dato</mat-label>
+        <mat-label style="color: #306881;">Valor dato</mat-label>
          <input [(ngModel)]="nuevoItem.valor" matInput  type="text" value="chau" [ngModelOptions]="{standalone: true}">
        </mat-form-field> 
       <!-- <input type="text" class="form-control col-md-3"  [(ngModel)]="nuevoItem.propiedad" >
