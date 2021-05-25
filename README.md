@@ -73,7 +73,7 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/login.png" alt="">
 
- 🔹 Al ingresar como paciente se podrá observar la siguiente pagina de Home. Donde se prodá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
+ 🔹 Al ingresar como paciente se podrá observar la siguiente pagina de Home. Donde se podrá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
 
  <img src="/src/assets/readme/homePaciente.png" alt="">
 
@@ -97,12 +97,6 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 🔹 En este apartado nos encontraremos el menu en el cual el Profesional puede agregar o eliminar días y horarios de atención.
 
  <img src="/src/assets/readme/horaProfesional.png" alt="">
-
-<h2> <strong>Detalle del Turno<strong> </h2>
-
-🔹 En el detalle del turno estan disponibles, tanto los datos del paciente como del profesional, además de la historia clínica y los datos de las encuestas.
-
- <img src="/src/assets/readme/turnoDetalle.png" alt="">
   
  <h2> <strong>Gestion de turnos<strong> </h2>
    
