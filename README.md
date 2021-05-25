@@ -73,7 +73,7 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/login.png" alt="">
 
- 🔹 Al ingresar como paciente se poddrá observar la siguiente pagina de Home. Donde se prodá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
+ 🔹 Al ingresar como paciente se podrá observar la siguiente pagina de Home. Donde se prodá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
 
  <img src="/src/assets/readme/homePaciente.png" alt="">
 
