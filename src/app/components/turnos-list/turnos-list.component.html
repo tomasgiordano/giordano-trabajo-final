@@ -61,10 +61,10 @@
             <td>{{turno.estado|estadoTurno}}  </td>
             <!-- <td>{{turno.comentario}} </td> -->
             <td>
-              <button  (click)="tomarTurno(turno)" class="btn btn-primary" style="margin-right: 1rem;">info</button>
+              <button (click)="tomarTurno(turno)" class="btn btn-primary" style="margin-right: 1rem;background: #306881;">info</button>
               <button *ngIf="usuario.rol == 'paciente' && turno.estado < 2" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
               <button *ngIf="usuario.rol == 'profesional' && turno.estado == 0" (click)="aceptar(turno)" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
-              <button *ngIf="usuario.rol == 'profesional'  && turno.estado == 0" class="btn btn-danger" (click)="rechazar(turno)" >Rechazar</button>
+              <button  *ngIf="usuario.rol == 'profesional'  && turno.estado == 0" class="btn btn-danger" (click)="rechazar(turno)" >Rechazar</button>
               <button *ngIf="usuario.rol == 'profesional' && turno.estado == 1 " class="btn btn-danger" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
               
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Dinamicos, Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/services/auth.service';
@@ -36,6 +36,11 @@ export class ModalTurnoComponent implements OnInit {
   ngOnInit(): void {
     
     
+  }
+  ngOnChanges(): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log(this.turno);
   }
   cerrar()
   {

@@ -245,7 +245,6 @@ export class AuthService {
 
   //Registro Turnos
   async registerTurnos(turno: Turnos) {
-    debugger;
     return new Promise((resolve, reject) => {
       this.db
         .collection('turnos')
