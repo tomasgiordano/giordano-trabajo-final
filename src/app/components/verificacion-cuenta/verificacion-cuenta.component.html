@@ -1,0 +1,19 @@
+<mat-toolbar style="background-color: #c2185b; color: white;" class="expanded-toolbar">
+    <img style="height: 3rem; width: 3rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/fondo.png" alt="">
+      Verificación
+  </mat-toolbar>
+
+  <div class="container"> 
+
+   <div class="mensaje">
+     <h2>Muchas Gracias por Registrarte!</h2>
+    <p>Te hemos enviado un email de confirmacion a <strong>{{this.email}}</strong></p>
+    <p>Por favor revise su correo e ingrese en el link de autenticación recibido.</p>
+    <div class="botones" >
+        <button mat-button  style="background-color:green; color: white;" (click)="loguearse()">Loguearse</button>
+        <button mat-button style="background-color:#c2185b; color: white;" (click)="rEmail()">Reenviar Email</button>
+    </div> 
+
+   </div>
+
+  </div>

@@ -24,7 +24,10 @@
           <input style="color: black;" matInput type="password" [(ngModel)]="clave" name="psw">
         </mat-form-field>
         <br>
-        <button style="margin-top: 2rem; width: 100%;" class="btn btn-block"  mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
+        <div  class="recaptcha">
+          <re-captcha  (resolved)="resolved($event)" siteKey="6Lfc9twZAAAAAAjwYSzByar-hPR8o8rzi9mXE_FI"></re-captcha>
+        </div>
+        <button [disabled]="!recaptcha" style="margin-top: 2rem; width: 100%;" class="btn btn-block"  mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
       </form>
       <br>
       <h3>¿No tenés usuario?  <a href="/registro">Registrate</a></h3>

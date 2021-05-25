@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   usuarios: Array<any> = [
-    { id: 0, nombre: "Administrador", correo: "admin@admin.com", clave: "123456" },
-    { id: 1, nombre: "Paciente", correo: "paciente@paciente.com", clave: "123456"},
-    { id: 2, nombre: "Profesional", correo: "profesional@profesional.com", clave: "123456"}
+    { id: 0, nombre: "Administrador", correo: "castrocarlos313@gmail.com", clave: "123456" },
+    { id: 1, nombre: "Paciente", correo: "tomiigiordano@gmail.com", clave: "123456"},
+    { id: 2, nombre: "Profesional", correo: "tomasgiordano18@gmail.com", clave: "123456"}
   ] 
 
   onChange(id) 
@@ -44,6 +44,11 @@ export class LoginComponent implements OnInit {
     }).catch(error =>{
       console.log("anda");
     })
+  }
+  
+  resolved(captchaResponse: any) {
+    this.recaptcha = captchaResponse;
+    console.log("captcha: " + this.recaptcha);
   }
 
 }

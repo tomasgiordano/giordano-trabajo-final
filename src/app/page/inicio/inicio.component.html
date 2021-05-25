@@ -25,14 +25,14 @@
           <p>Somos una clínica y un cuerpo médico comprometidos con la excelencia al servicio integral de nuestros pacientes, bajo los más altos estándares de seguridad y calidad.</p>
           <hr>
           <div class="fila">
-            <div id="misTurnos" class="turnos" style="margin-right: 5rem;">
+            <div id="misTurnos" (click)="turnos()" class="turnos" style="margin-right: 5rem;">
               <label *ngIf="rol =='paciente'" for="" style="font-size: 2rem;">Mis turnos</label>
               <label *ngIf="rol!='paciente'" for="" style="font-size: 2rem;"> Turnos</label>
               <div>
                   <img style="width: 15rem; height: 15rem;" src="../../../assets/misturnos.png" alt="">
             </div>
             </div>
-            <div *ngIf="rol == 'paciente'" id="turnos" class="turnos">
+            <div *ngIf="rol == 'paciente'" (click)="solicitarTurno()" id="turnos" class="turnos">
               <label for="" style="font-size: 2rem;">Solicitar Turno</label>
               <div style="align-items: center;">
                 <img style="width: 14rem; height: 14rem;" src="../../../assets/turno.png" alt="">
@@ -42,7 +42,7 @@
               <label  for="" style="font-size: 2rem;">Alta Admin</label>
                     <img style="width: 18rem; height: 18rem;" src="../../../assets/user.png" alt="">
             </div>
-             <div *ngIf="rol == 'profesional'" id="turnos" class="turnos">
+             <div *ngIf="rol == 'profesional'" (click)="horarios()" id="turnos" class="turnos">
             <label  for="" style="font-size: 2rem;"> Tus Horarios</label>
             <img style="width: 18rem; height: 15rem;" src="../../../assets/alarma.png" alt="">
           </div>

@@ -27,13 +27,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { FormsModule } from '@angular/forms';
 
 //Firebase
 import { AngularFireModule, FirebaseApp } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 //Alerta
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -47,6 +49,26 @@ import { DetalleUsuarioComponent } from './components/detalle-usuario/detalle-us
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { ListaUsuariosComponent } from './page/lista-usuarios/lista-usuarios.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { ListaEspecialidadesComponent } from './components/lista-especialidades/lista-especialidades.component';
+import { ListaFechaHoraComponent } from './components/lista-fecha-hora/lista-fecha-hora.component';
+import { ListaProfesionalesComponent } from './components/lista-profesionales/lista-profesionales.component';
+import { ModalTurnoComponent } from './components/modal-turno/modal-turno.component';
+import { ModalTurnoDetalleComponent } from './components/modal-turno-detalle/modal-turno-detalle.component';
+import { SacarTurnoComponent } from './components/sacar-turno/sacar-turno.component';
+import { SolicitarTurnoComponent } from './components/solicitar-turno/solicitar-turno.component';
+import { TurnoDetalleComponent } from './components/turno-detalle/turno-detalle.component';
+import { TurnosListComponent } from './components/turnos-list/turnos-list.component';
+import { BusquedaPipe } from './pipes/busqueda.pipe';
+import { CalificacionPipe } from './pipes/calificacion.pipe';
+import { EstadoTurnoPipe } from './pipes/estado-turno.pipe';
+import { FechaPipe } from './pipes/fecha.pipe';
+import { FiltroPipe } from './pipes/filtro.pipe';
+import { MesesPipe } from './pipes/meses.pipe';
+import { SortTurnosPipe } from './pipes/sort-turnos.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
+import * as firebase from 'firebase';
 
 @NgModule({
   declarations: [
@@ -62,7 +84,25 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ListaComponent,
     DetalleUsuarioComponent,
     PaginatePipe,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    HorariosComponent,
+    ListaEspecialidadesComponent,
+    ListaFechaHoraComponent,
+    ListaProfesionalesComponent,
+    ModalTurnoComponent,
+    ModalTurnoDetalleComponent,
+    SacarTurnoComponent,
+    SolicitarTurnoComponent,
+    TurnoDetalleComponent,
+    TurnosListComponent,
+    BusquedaPipe,
+    CalificacionPipe,
+    EstadoTurnoPipe,
+    FechaPipe,
+    FiltroPipe,
+    MesesPipe,
+    SortTurnosPipe,
+    VerificacionCuentaComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +127,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatStepperModule,
     MatExpansionModule,
     MatPaginatorModule,
-    FormsModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyDb4GaW-1w6n-vtpPXE5GitKcnimT2iLfk",
       authDomain: "loginscreen-bfc67.firebaseapp.com",
@@ -101,7 +140,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ToastrModule.forRoot(),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgxCaptchaModule,
+    RecaptchaModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AngularFireAuth,

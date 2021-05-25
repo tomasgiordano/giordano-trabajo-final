@@ -1,0 +1,49 @@
+<div class="card border-dark mb-3 animated fadeIn faster ld ld-jump-in container" *ngIf="turno">
+   
+    <div  style="height: auto;" >
+        <div class="col-md-12">
+            <div class="card-body text-center w-100">
+
+                <h2 *ngIf="user.rol =='paciente' && turno.estado == 3 || turno.estado == 5" >Reseña</h2>
+                <p *ngIf="user.rol =='paciente' &&  turno.estado == 3 || turno.estado == 5"> Calificación: {{turno.calificacionProfesional}} </p>
+                <p *ngIf="user.rol =='paciente' &&  turno.estado == 3 || turno.estado == 5">{{turno.opinionProfesional}}</p>
+                <h2 *ngIf="user.rol =='paciente' && turno.estado < 3 "> Aún no lo han atendido</h2>
+                <h2 *ngIf="user.rol =='paciente' && turno.estado == 4 "> Justificación</h2>
+                <p *ngIf="user.rol =='paciente' && turno.estado == 4 ">{{turno.comentario}}</p>
+
+
+                <h2 *ngIf="user.rol =='profesional' &&  turno.estado == 5" >Comentario Paciente</h2>
+                <p *ngIf="user.rol =='profesional' &&  turno.estado == 5"> Calificación: {{turno.calificacionPaciente}} </p>
+                <p *ngIf="user.rol =='profesional' &&  turno.estado == 5">{{turno.opinionPaciente}}</p>
+                <h2 *ngIf="user.rol =='profesional' && turno.estado == 3 "> El Paciente Aún no Respondió la Encuesta</h2>
+                <h2 *ngIf="user.rol =='profesional' && turno.estado == 2 "> Rechazaste al paciente</h2>
+                <h2 *ngIf="user.rol =='profesional' && turno.estado == 0 "> Debe Aceptar o Rechazar</h2>
+                <h2 *ngIf="user.rol =='profesional' && turno.estado == 1 "> Debe Atender al paciente</h2>
+                <h2 *ngIf="user.rol =='profesional' && turno.estado == -1"> El Paciente <strong>Canceló</strong> la consulta</h2>
+
+
+                <!-- <h2 class="card-title"> {{ turno.paciente.nombre + " " + turno.paciente.apellido | uppercase }} </h2>
+                <p > <strong>Estado:</strong>  {{ turno.estado}} </p>
+                <p>Profesional: {{ turno.profesional.apellido }}</p>
+                <p >Fecha de Turno: {{ turno.fecha }}</p>
+                <p>Especliadad: {{turno.especialidad}}</p>
+                <button class="btn btn-danger btn-block" *ngIf="borrado === 1" (click)="borrarActor(actor.id)">
+                    <i class="fas fa-trash"></i> Borrar
+                </button> -->
+                <button *ngIf="user.rol =='paciente'" [disabled]="turno.estado !=3"(click)="MostrarModal()" class="btn btn-primary btn-block">
+                    <!-- <i class="fas fa-trash"></i> Encuesta -->
+                   <p >Encuesta</p> 
+               
+
+                </button> 
+                <button *ngIf="user.rol =='profesional'" [disabled]="turno.estado != 1 "(click)="MostrarModal()" class="btn btn-primary btn-block">
+                    <!-- <i class="fas fa-trash"></i> Encuesta -->
+                 
+                   <p>Atender</p> 
+
+                </button> 
+
+            </div>
+        </div>
+    </div>
+</div>

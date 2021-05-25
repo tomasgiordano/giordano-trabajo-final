@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -10,7 +11,7 @@ export class InicioComponent implements OnInit {
   nombre: string;
   apellido: string;
   img1: string;
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
     this.rol = localStorage.getItem('perfil');
@@ -19,4 +20,20 @@ export class InicioComponent implements OnInit {
     this.img1 = localStorage.getItem('img1');
   }
 
+  solicitarTurno(){
+    this.route.navigate(['home/sacarTurno']); 
+  }
+  
+  altaAdmin(){
+    this.route.navigate(['home/altaAdmin']); 
+  }
+
+  turnos(){
+    this.route.navigate(['home/listadoTurnos']); 
+
+  }
+
+  horarios(){
+    this.route.navigate(['home/horarios']); 
+  }
 }
