@@ -77,12 +77,6 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/homePaciente.png" alt="">
 
- <h2> <strong>Listado del lado del Paciente<strong> </h2>
-  
- En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para cancelar el turno de necesitarlo, y otro para obtener mas información del mismo. 
-
- <img src="/src/assets/readme/listaPaciente.png" alt="">
-
   <h2> <strong>Sacar un Turno<strong> </h2>
  
 🔹 Debemos seleccionar la especialidad a la cual queremos solicitar el turno, luego el profesional pertinente y por último el dia y hora disponible para nuestra solicitud.  
