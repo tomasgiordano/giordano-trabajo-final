@@ -104,13 +104,6 @@ export class AuthService {
         this.toas.error('Usuario Inválido', 'Error');
         reject(err);
       }
-      // this.angularFireAuth.signInWithEmailAndPassword(email, password)
-      // .then(user => {
-      //   this.router.navigate(['home']);
-      //   resolve(user);
-      // }).catch(err => {
-
-      // });
     });
   }
 

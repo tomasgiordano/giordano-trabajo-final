@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -12,14 +13,20 @@ export class LoginComponent implements OnInit {
   claveClass:'';
   email:string;
   clave:string;
-  recaptcha: any;
+  recaptcha: '';
   siteKey:string;
   desa:boolean = false;
+  sitekey:string;
+  formGroup: FormGroup;
 
-  constructor(private auth:AuthService) { 
+  constructor(private auth:AuthService,private formBuilder: FormBuilder) { 
+    this.siteKey = '6Le6rO8aAAAAACqYxNhdHrTwqzD0Yl2HGEpBqUF5'
   }
 
   ngOnInit(): void {
+    this.formGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
   }
 
   usuarios: Array<any> = [
@@ -38,12 +45,15 @@ export class LoginComponent implements OnInit {
 
   Entrar()
   {
-    this.auth.login(this.email,this.clave).then( res=>{
-      console.log("se loguea");
-    
-    }).catch(error =>{
-      console.log("anda");
-    })
+    if(this.recaptcha!=''){
+      this.auth.login(this.email,this.clave).then( res=>{
+        console.log("se loguea");
+      
+      }).catch(error =>{
+        console.log("anda");
+      })
+    }
+
   }
   
   resolved(captchaResponse: any) {

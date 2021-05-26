@@ -1,3 +1,12 @@
+
+<head>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>
+</head>
 <mat-toolbar style="background-color: #306881; color: white;" class="expanded-toolbar">
     <img style="height: 3rem; width: 2rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/login.png" alt="">
       Iniciar Sesión
@@ -24,10 +33,10 @@
           <input style="color: black;" matInput type="password" [(ngModel)]="clave" name="psw">
         </mat-form-field>
         <br>
-        <div  class="recaptcha">
-          <re-captcha  (resolved)="resolved($event)" siteKey="6Lfc9twZAAAAAAjwYSzByar-hPR8o8rzi9mXE_FI"></re-captcha>
+        <div class="recaptcha">
+          <re-captcha (resolved)="resolved($event)" [(siteKey)]="this.siteKey"></re-captcha>
         </div>
-        <button [disabled]="!recaptcha" style="margin-top: 2rem; width: 100%;" class="btn btn-block"  mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
+        <button [disabled]="!recaptcha" style="margin-top: 2rem;width: 100%;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
       </form>
       <br>
       <h3>¿No tenés usuario?  <a href="/registro">Registrate</a></h3>
