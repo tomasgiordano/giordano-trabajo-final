@@ -67,21 +67,15 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/registroProfesional.png" alt="">
 
- ## Ingreso a la Web
+ ## Login
 
  🔹 Una vez verificado nuestro correo electrónico, podremos ingresar con nuestro email y contraseña.
 
  <img src="/src/assets/readme/login.png" alt="">
 
- 🔹 Al ingresar como paciente se poddrá observar la siguiente pagina de Home. Donde se prodá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
+ 🔹 Al ingresar como paciente se podrá observar la siguiente pagina de Home. Donde se podrá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
 
  <img src="/src/assets/readme/homePaciente.png" alt="">
-
- <h2> <strong>Listado del lado del Paciente<strong> </h2>
-  
- En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para cancelar el turno de necesitarlo, y otro para obtener mas información del mismo. 
-
- <img src="/src/assets/readme/listaPaciente.png" alt="">
 
   <h2> <strong>Sacar un Turno<strong> </h2>
  
@@ -98,23 +92,11 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/homeProfesional.png" alt="">
 
- <h2> <strong>Listado del lado del Profesional<strong> </h2>
-
- 🔹 En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para Aceptar o rechazasr el turno de ser necesitarlo, y otro para obtener mas información del mismo.
-
- <img src="/src/assets/readme/listadoProfesional.png" alt="">
-
  <h2> <strong>Horarios de Profesional<strong> </h2>
 
 🔹 En este apartado nos encontraremos el menu en el cual el Profesional puede agregar o eliminar días y horarios de atención.
 
  <img src="/src/assets/readme/horaProfesional.png" alt="">
-
-<h2> <strong>Detalle del Turno<strong> </h2>
-
-🔹 En el detalle del turno estan disponibles, tanto los datos del paciente como del profesional, además de la historia clínica y los datos de las encuestas.
-
- <img src="/src/assets/readme/turnoDetalle.png" alt="">
   
  <h2> <strong>Gestion de turnos<strong> </h2>
    
@@ -131,8 +113,6 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 🔹 Desde esta pagina de inicio vamos a poder ver un listado de usuarios, y crear nuevos administradores.
 
  <img src="/src/assets/readme/homeAdmin.png" alt="">
-
-<h2> <strong>Listado de usuarios<strong> </h2>
   
 🔹 Desde aqui, los administradores ademas de poder ver el listado de usuarios, pueden habilitar o deshabilitar profesionales.
   
