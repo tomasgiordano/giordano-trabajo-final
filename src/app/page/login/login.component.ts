@@ -61,5 +61,20 @@ export class LoginComponent implements OnInit {
     console.log("captcha: " + this.recaptcha);
   }
 
+  
+  Paciente()
+  {
+    this.onChange(1);
+  }
+
+  Medico()
+  {
+    this.onChange(2);
+  }
+
+  Admin()
+  {
+    this.onChange(0);
+  }
 }
 

@@ -1,27 +1,52 @@
 <div class="div1">
     
-    <table class="table table-hover table-bordered animated fadeIn faster ld ld-slide-ttb-in">
+    <!-- <table class="table table-hover table-bordered animated fadeIn faster ld ld-slide-ttb-in">
         <thead>
           <tr class="bg-primary" style="color: white;">
             <th>Especialidades</th>
-            <!-- <th>Seleccionar</th> -->
-           
-           
           </tr>
         </thead>
         <tbody >
-          <tr  *ngFor="let especialidad of listado  let i=index" (click)="tomarEspecialidad(especialidad)">
-            <td  id="{{i}}" [ngStyle]="{'background-color': col}" >{{especialidad.nombre}} 
+          <tr *ngFor="let especialidad of listado  let i=index" (click)="tomarEspecialidad(especialidad)">
+            <td id="{{i}}" [ngStyle]="{'background-color': col}" >{{especialidad.nombre}} 
             </td>
-            <!-- <td>
-              <button [disabled]="dis" (click)="seleccionado(i)" class="btn btn-success">select</button>
-
-            </td> -->
-           
-           
           </tr>     
-        
         </tbody>
-      </table>
-      
-    </div>
+      </table> -->
+      <div style="float: left; margin-right: 2rem;" (click)="tomarEspecialidad(listado[1])">
+        <img src="../../../assets/neurologia.png" class="imgRedonda">
+        <div>
+          <p class="textImg">Neurologia</p>
+        </div>
+      </div>
+      <div style="float: left ; margin-right: 2rem;" (click)="tomarEspecialidad(listado[0])">
+        <img src="../../../assets/oftalmologia.png" class="imgRedonda">
+        <div style="align-items: center;">
+          <p class="textImg">Oftalmologia</p>
+        </div>
+      </div>
+      <div style="float: left; margin-right: 2rem;" (click)="tomarEspecialidad(listado[2])">
+        <img src="../../../assets/psiquiatria.png" class="imgRedonda">
+        <div style="align-items: center;">
+          <p class="textImg">Psiquiatria</p>
+        </div>
+      </div>
+      <div style="float: left; margin-right: 2rem;" (click)="tomarEspecialidad(listado[3])">
+        <img src="../../../assets/pediatria.png" class="imgRedonda">
+        <div style="align-items: center;">
+          <p class="textImg">Pedriatria</p>
+        </div>
+      </div>
+      <div style="float: left; margin-right: 2rem;" (click)="tomarEspecialidad(listado[4])">
+        <img src="../../../assets/cardiologia.png" class="imgRedonda">
+        <div style="align-items: center;">
+          <p class="textImg">Cardiologia</p>
+        </div>
+      </div>
+      <div style="float: left; margin-right: 2rem;" (click)="tomarEspecialidad(listado[5])">
+        <img src="../../../assets/radiologia.png" class="imgRedonda">
+        <div style="align-items: center;">
+          <p class="textImg">Radiologia</p>
+        </div>
+      </div>
+</div>

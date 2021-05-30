@@ -1,0 +1,20 @@
+.container{
+    background-color: white;
+    -webkit-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+    box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    width: auto;
+    height: 30px;
+    float: left;
+}
+
+p{
+    float: left;
+}

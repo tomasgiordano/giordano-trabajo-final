@@ -69,6 +69,7 @@ import { SortTurnosPipe } from './pipes/sort-turnos.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
 import * as firebase from 'firebase';
+import { ProfesionalHoraComponent } from './components/profesional-hora/profesional-hora.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import * as firebase from 'firebase';
     FiltroPipe,
     MesesPipe,
     SortTurnosPipe,
-    VerificacionCuentaComponent
+    VerificacionCuentaComponent,
+    ProfesionalHoraComponent,
   ],
   imports: [
     BrowserModule,

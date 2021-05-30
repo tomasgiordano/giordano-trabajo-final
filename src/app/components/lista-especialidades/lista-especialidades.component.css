@@ -1,0 +1,11 @@
+.imgRedonda {
+    width:7em;
+    height:7em;
+    border-radius:160px;
+    border:10px solid #666;
+    margin-right: 10px;
+}
+
+.textImg{
+    margin-right: 5px;
+}

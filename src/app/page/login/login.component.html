@@ -18,12 +18,12 @@
       </div>
       <div mat-card-avatar class="example-header-image"></div>
       <form class="example-form">
-        <mat-form-field style="width: 100%;" class="full-width-input">
-          <mat-label style="color: #306881;">Seleccione un Usuario</mat-label>
-        <mat-select>
-        <mat-option (click)="onChange(usuario.id)" *ngFor="let usuario of usuarios"value="{{usuario.id}}"> {{usuario.nombre}}</mat-option>
-      </mat-select>
-      </mat-form-field>
+        <div>
+          <img src="../../../assets/paciente.png" class ="imgRedonda" (click)="Paciente()">
+          <img src="../../../assets/medico.png" class="imgRedonda" (click)="Medico()">
+          <img src="../../../assets/admin.png" class="imgRedonda" (click)="Admin()">
+        </div>
+        <br>
         <mat-form-field style="width: 100%;" class="full-width-input">
           <mat-label  style="color: #306881;" >Email</mat-label>
           <input  style="color: black;" matInput type="email" [(ngModel)]="email" name="email">

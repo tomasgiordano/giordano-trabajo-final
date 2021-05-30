@@ -5,20 +5,16 @@
 <div class="contenedor" >
     <mat-card class="container">
     <div class="imgcontainer">
-        <img src="../../../assets/login.png" alt="Avatar" class="avatar" width="104" >
+        <img src="../../../assets/login.png" alt="Avatar" class="avatar" width="70">
     </div>
-    <div mat-card-avatar class="example-header-image"></div>
     <form class="example-form">
-        <mat-form-field style="width: 25%;" class="full-width-input">
-            <mat-label style="color: #306881;">Seleccione una opción</mat-label>
-        <mat-select [(ngModel)]="usuario.tipo" name="tipo"> 
 
-            <mat-option value="profesional"> Profesional</mat-option>
-            <mat-option value="paciente"> Paciente </mat-option>
-            
-        </mat-select>
-    </mat-form-field>
+    <div>
+        <img src="../../../assets/paciente.png" ngClass ="imgRedonda" (click)="Paciente()">
+        <img src="../../../assets/medico.png" ngClass="imgRedonda" (click)="Medico()">
+    </div>
     <br>
+    <h1 style="color: #306881; ">Registro {{usuario.tipo}}</h1>
         <mat-form-field style="width: 40%; margin-right: 10%;" >
             <mat-label  style="color: #306881;" >Nombre</mat-label>
             <input  style="color: black;" matInput type="text" [(ngModel)]="usuario.nombre" name="nombre">
@@ -109,8 +105,7 @@
         </ul>
     </span>
         <br>
-        <button style="margin-top: 2rem; width: 100%;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Registrarse</button>
+        <button style="margin-top: 1rem; width: 100%;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Registrarse</button>
     </form>
-    
     </mat-card>
 </div>

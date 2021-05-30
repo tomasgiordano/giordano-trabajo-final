@@ -27,3 +27,11 @@ box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
 form{
     padding: 1rem;
 }
+
+.imgRedonda {
+    width:7em;
+    height:7em;
+    border-radius:160px;
+    border:10px solid #666;
+    margin-right: 10px;
+}

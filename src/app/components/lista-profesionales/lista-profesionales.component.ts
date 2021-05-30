@@ -10,6 +10,8 @@ export class ListaProfesionalesComponent implements OnInit {
 
   @Input() especialidad:string;
   @Input() listado:any;
+  @Input() profesional:string;
+  @Input() listadoFecha:any;
   @Output() enventoProfesional = new EventEmitter<any>();
   
   constructor(private data:DataService) { }

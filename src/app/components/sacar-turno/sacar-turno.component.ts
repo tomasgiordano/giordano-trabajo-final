@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { ToastrService } from 'ngx-toastr';
 import { element } from 'protractor';
-import { Turnos, Usuario } from 'src/app/models/models.module';
+import { Profesional, Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -25,10 +27,13 @@ export class SacarTurnoComponent implements OnInit {
   hora:any;
   turnos:any = new Array<Turnos>();
   turnosDisponibles:Array<any> = new Array<any>();
+
    
 
-  constructor(private _formBuilder: FormBuilder,private data:DataService,private toastr:ToastrService,private auth:AuthService) {}
-
+  constructor(private _formBuilder: FormBuilder,private data:DataService,private toastr:ToastrService,private auth:AuthService) {
+    
+  }
+  
   ngOnInit() {
     this.turnos =this.data.getTurnos();
     var uid="0";
@@ -90,19 +95,22 @@ export class SacarTurnoComponent implements OnInit {
   get nombre() {​​ return this.firstFormGroup.get('firstCtrl'); }
   
   
-  tomarEspecialidad(dato:any)
+  tomarEspecialidad(dato:any,stepper:any)
   { 
     const {​​ nombre }​​ = this.firstFormGroup.value;
     // nombre = dato.nombre 
      this.turno.especialidad = dato.nombre;
+     stepper.next();
+     this.cargarProfesionales(this.turno.especialidad);
+     
   }
-  tomarProfesional(dato:any)
+
+  tomarProfesional(dato:any,stepper:any)
   {
     this.turno.profesional = dato;
     this.turnosDisponibles = [];
     this.Fechas();
-    
-    
+    stepper.next();
   }
   parserFecha(fecha:Date)
   {
@@ -134,9 +142,11 @@ export class SacarTurnoComponent implements OnInit {
   
       if(res.length > 0)
       { 
-        
       this.profesionales = res; 
-  
+      }
+      else{
+        this.profesionales = new Array();
+        this.turno.profesional = new Profesional();
       }
 
       console.log(res);
@@ -173,16 +183,15 @@ export class SacarTurnoComponent implements OnInit {
           dia = 6; 
         break;
     } 
-
     return dia;
-
   }  
 
-  tomarFechaHora(evento:any)
+  tomarFechaHora(evento:any,stepper:any)
   { 
     this.turno.fecha = evento.fecha;
     this.turno.hora = evento.hora;
     console.log(this.turno.fecha);
+    stepper.next();
   }
 
   ExisteTurno(fecha:string,hora:any,num:number,dia:string,mes:number)
@@ -193,9 +202,7 @@ export class SacarTurnoComponent implements OnInit {
         if(turnosDisponibles.length == 0)
         { 
           this.turnosDisponibles.push({fecha:fecha,hora:hora,numero:num,nombre:dia,mes:mes+1});
-    
         }
-          //console.info(this.turnosDisponibles);   
       })
       
 
@@ -280,6 +287,14 @@ export class SacarTurnoComponent implements OnInit {
 
     
 
+  }
+
+  goBack(stepper: MatStepper){
+    stepper.previous();
+  }
+
+  goForward(stepper: MatStepper){
+    stepper.next();
   }
 
  

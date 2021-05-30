@@ -73,3 +73,19 @@ form{
     font-weight: lighter;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.imgRedonda {
+    width:12em;
+    height:12em;
+    border-radius:160px;
+    border:10px solid #666;
+    margin-right: 10px;
+}
+
+.imgRedondaSelec {
+    width:12em;
+    height:12em;
+    border-radius:160px;
+    border:10px solid #306881;
+    margin-right: 10px;
+}

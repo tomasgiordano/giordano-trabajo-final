@@ -6,7 +6,7 @@
       </div>
       <div mat-card-avatar class="example-header-image"></div>
       <form class="example-form">
-       <br>
+      <br>
         <mat-form-field style="width: 40%; margin-right: 10%;" >
             <mat-label  style="color: #306881;" >Nombre</mat-label>
             <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.nombre" name="nombre">
@@ -23,7 +23,7 @@
           <mat-label  style="color: #306881;" >Email</mat-label>
           <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.email" name="email">
         </mat-form-field>
-       
+      
         <mat-form-field style="width: 40%;margin-right: 10%;" class="full-width-input">
           <mat-label style="color: #306881;">Seleccione una Especialidad</mat-label>
           <mat-select [(ngModel)]="turno.especialidad" name="tipo"> 
@@ -32,9 +32,9 @@
             
             
           </mat-select>
-       </mat-form-field>
+      </mat-form-field>
 
-       <mat-form-field style="width: 40%; " class="full-width-input">
+      <mat-form-field style="width: 40%; " class="full-width-input">
           <mat-label style="color: #306881;">Seleccione un Profesional</mat-label>
           <mat-select  [disabled]="turno.especialidad == undefined" [(ngModel)]="turno.profesional" name="profesional"> 
               
@@ -42,25 +42,18 @@
             
             
           </mat-select>
-       </mat-form-field>
+      </mat-form-field>
 
         <mat-form-field style="width: 40%; margin-right: 10%;"  >
           <mat-label  style="color: #306881;">Fecha</mat-label>
           <input [disabled]="turno.profesional.nombre == 'a' || turno.profesional.nombre == undefined" (change)="cargarHora()" style="color: black;" matInput type="date" [(ngModel)]="turno.fecha" name="psw">
         </mat-form-field>
-   
         <mat-form-field style="width: 40%; " class="full-width-input">
           <mat-label style="color: #306881;">Seleccione una Hora</mat-label>
-          <mat-select  [disabled]="horas.length < 1" [(ngModel)]="turno.hora" name="horas"> 
-              
-            <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option>
-            
-            
+          <mat-select  [disabled]="horas.length < 1" [(ngModel)]="turno.hora" name="horas">     
+            <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option> 
           </mat-select>
-       </mat-form-field>
-        
-
-    
+        </mat-form-field>
         <br>
         <button style="margin-top: 2rem;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Solicitar Turno</button>
       

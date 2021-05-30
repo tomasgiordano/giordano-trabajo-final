@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
 import { $ } from 'protractor';
 import { DataService } from 'src/app/services/data.service';
 import { displayPartsToString } from 'typescript';
@@ -14,14 +15,13 @@ export class ListaEspecialidadesComponent implements OnInit {
   col:string = "";
   dis:boolean = false;
   @Output() enventoEspecialidad = new EventEmitter<any>();
-
+  @Input('stepper') stepper: any;
  
   constructor(private data:DataService) { }
 
   
   ngOnInit(): void {
     this.data.getEspecialidades().subscribe(res =>{
-      
       this.listado = res; 
     })
   }
@@ -33,11 +33,17 @@ export class ListaEspecialidadesComponent implements OnInit {
   seleccionado(i:number){
     
     let id:string = i.toString();
-   
 
-     document.getElementById(id).style.backgroundColor='green';
-     this.dis = true;
+    document.getElementById(id).style.backgroundColor='green';
+    this.dis = true;
     
   }
 
+  goBack(stepper: MatStepper){
+    stepper.previous();
+  }
+
+  goForward(stepper: MatStepper){
+    stepper.next();
+  }
 }

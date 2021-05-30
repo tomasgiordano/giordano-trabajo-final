@@ -54,6 +54,17 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  Paciente()
+  {
+    this.usuario.tipo = "paciente";
+    
+    
+  } 
+  Medico()
+  {
+    this.usuario.tipo = "profesional";
+  }
+
   validacion()
   {  
     if(this.usuario.nombre != null && this.usuario.apellido !=null && this.usuario.email !=null && this.usuario.dni !=null && this.usuario.clave !=null && this.clave !=null && this.usuario.tipo)
