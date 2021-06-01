@@ -70,7 +70,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
 import * as firebase from 'firebase';
 import { ProfesionalHoraComponent } from './components/profesional-hora/profesional-hora.component';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -147,7 +147,8 @@ import { ProfesionalHoraComponent } from './components/profesional-hora/profesio
     RecaptchaModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   providers: [
     AngularFireAuth,

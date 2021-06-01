@@ -20,6 +20,7 @@ export class HorariosComponent implements OnInit {
   dia:any;
   hora:any;
   profesional:any = new Profesional();
+  turno:any;
   displayedColumns: string[] = ['Nombre', 'Día', 'Hora','Acción'];
   ngOnInit(): void {
   
@@ -27,12 +28,12 @@ export class HorariosComponent implements OnInit {
     this.auth.getUserUid().then(res =>{
       uid = res.toString();
       this.data.getUserByUid(uid)
-         .subscribe(res => {
-           this.profesional = res;
-         })
+        .subscribe(res => {
+          this.profesional = res;
+        })
     }).catch(res =>{
-     uid = res.toString();
-     console.log("Sin Usuario");
+    uid = res.toString();
+    console.log("Sin Usuario");
     });
   }
 
@@ -43,11 +44,10 @@ export class HorariosComponent implements OnInit {
   }
   setHorarios(inicio:number,final:number)
   {
-     this.horarios = [];
-     for (let index = inicio; index < final; index++) {
-       
-       let time = index + ":" + "00";
-       this.horarios.push(time);
+    this.horarios = [];
+    for (let index = inicio; index < final; index++) {
+      let time = index + ":" + "00";
+      this.horarios.push(time);
     } 
 
     console.info(this.horarios);
@@ -62,19 +62,46 @@ export class HorariosComponent implements OnInit {
     }
     else
     {
-      this.setHorarios(8,20);
+      this.setHorarios(8, 20);
 
     }
   }
 
   atencion()
   { 
-
-     this.profesional.atencion.push({dia:this.dia,hora:this.hora});
-
-
+    if(this.dia != "Sábado")
+    {
+      if(this.turno == "Tarde")
+      {
+        this.profesional.atencion.push({dia:this.dia,hora:"14:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"15:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"16:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"17:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"18:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"19:00"});
+      }
+      else
+      {
+        this.profesional.atencion.push({dia:this.dia,hora:"8:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"9:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"10:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"11:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"12:00"});
+        this.profesional.atencion.push({dia:this.dia,hora:"13:00"});
+      }
+    }
+    else
+    {
+      this.profesional.atencion.push({dia:this.dia,hora:"8:00"});
+      this.profesional.atencion.push({dia:this.dia,hora:"9:00"});
+      this.profesional.atencion.push({dia:this.dia,hora:"10:00"});
+      this.profesional.atencion.push({dia:this.dia,hora:"11:00"});
+      this.profesional.atencion.push({dia:this.dia,hora:"12:00"});
+      this.profesional.atencion.push({dia:this.dia,hora:"13:00"});
+    }
+    
     this.auth.updateHorario(this.profesional).then(res =>{
-       this.toast.success("Día y horario guardado con éxito");
+    this.toast.success("Día y horario guardado con éxito");
     }).catch(error =>{
       this.toast.error(error,"Error");
     });
@@ -85,22 +112,18 @@ export class HorariosComponent implements OnInit {
   eliminar(item)
   { 
    // console.log(item);
-     let aux:Array<any> = new Array();
-     let nuev:Array<any> = new Array();
+    let aux:Array<any> = new Array();
+    let nuev:Array<any> = new Array();
 
-     aux.push(this.profesional.atencion);
+    aux.push(this.profesional.atencion);
     
-     aux[0].splice(aux[0].indexOf(item),1);
-     
-     this.profesional.atencion = aux[0];
-     this.auth.updateHorario(this.profesional).then(res =>{
+    aux[0].splice(aux[0].indexOf(item),1);
+    
+    this.profesional.atencion = aux[0];
+    this.auth.updateHorario(this.profesional).then(res =>{
       this.toast.success("Registro Eliminado con éxito");
-   }).catch(error =>{
-     this.toast.error(error,"Error");
-   });
-
-
-    
+  }).catch(error =>{
+    this.toast.error(error,"Error");
+  });
   }
-
 }

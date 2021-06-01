@@ -52,7 +52,7 @@ table {
 .tableOverflow{
     margin-top: 2em;
     overflow-y: scroll;
-    height: 40em;
+    height: 25em;
 }
 
 .container {

@@ -203,11 +203,7 @@ export class SacarTurnoComponent implements OnInit {
         { 
           this.turnosDisponibles.push({fecha:fecha,hora:hora,numero:num,nombre:dia,mes:mes+1});
         }
-      })
-      
-
-    //this.turnosDisponibles =  
-     
+      })  
   }
 
   OrdenarLista()
@@ -256,11 +252,6 @@ export class SacarTurnoComponent implements OnInit {
         fecha.setDate(fecha.getDate() - dif);
         
       }
-      else
-      {
-        
-      }
-      
     }
     if(dif <1)
     {
