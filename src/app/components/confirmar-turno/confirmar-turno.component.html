@@ -1,0 +1,20 @@
+<div *ngIf="mostrar"  id="id01" class="modal">
+    <form class="modal-content animate ld ld-zoom-in">
+        <h1 style="color: #306881; margin-top: 2rem;font-size: xx-large;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Verificar Turno</h1>
+        <span style="margin-bottom: 2rem;" (click)="cerrar()" class="close" title="Close Modal">×</span>
+        <div class="verif">
+            <div class="cont">
+              <label style="color: #306881;" for=""><strong>Especialidad</strong> </label>
+              {{turno.especialidad}}
+              <label style="color: #306881;" for=""><strong>Profesional</strong> </label>
+              {{turno.profesional.nombre}} {{turno.profesional.apellido}}
+              <label style="color: #306881;" for=""><strong>Fecha</strong> </label>
+              {{this.turno.fecha | fecha}}
+              <label style="color: #306881;" for=""><strong>Hora</strong> </label>
+              {{this.turno.hora}} HS
+                <button style="background-color:  #306881; width: 80%; color: white;" mat-button (click)="Entrar()">Confirmar</button>
+            </div>
+          </div>
+    </form>
+</div>

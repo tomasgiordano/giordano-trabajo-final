@@ -8,10 +8,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ListaProfesionalesComponent implements OnInit {
 
-  @Input() especialidad:string;
   @Input() listado:any;
-  @Input() profesional:string;
-  @Input() listadoFecha:any;
   @Output() enventoProfesional = new EventEmitter<any>();
   
   constructor(private data:DataService) { }
@@ -22,7 +19,8 @@ export class ListaProfesionalesComponent implements OnInit {
 
   seleccionarProfesional(dato:any)
   {  
-     this.enventoProfesional.emit(dato);
+    
+    this.enventoProfesional.emit(dato);
   }
 
 }

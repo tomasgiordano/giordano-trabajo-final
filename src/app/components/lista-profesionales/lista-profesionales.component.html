@@ -1,31 +1,9 @@
-  
-      <div class="div1" *ngIf="especialidad">
-    <!-- <table class="table table-hover table-bordered animated fadeIn faster ld ld-slide-ttb-in">
-        <thead>
-          <tr class="bg-primary" style="color: white;">
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Dni</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let profesional of listado; let i = index" (click)="seleccionarProfesional(profesional)">
-            <img [src]="profesional.img1" alt="" width="75" height="75">
-            <td>{{profesional.nombre}} </td>
-            <td>{{profesional.apellido}} </td>
-            <td>{{profesional.dni}} </td>
-            <td>{{profesional.email}} </td>
-          </tr>
-        </tbody>
-      </table> -->
-      <div *ngFor="let profesional of listado; let i = index" (click)="seleccionarProfesional(profesional)" style="float:left">
+      <div *ngFor="let profesional of listado" (click)="seleccionarProfesional(profesional)" style="float:left">
           <div class="container">
             <img [src]="profesional.img1" alt="" width="75" height="75"class="imgRedonda">
             <p class="text">{{profesional.apellido}}</p> 
             <p class="text">{{profesional.nombre}}</p>
+            <p class="text">{{profesional.especialidad}}</p>
         </div>
       </div>
-      <br>
 

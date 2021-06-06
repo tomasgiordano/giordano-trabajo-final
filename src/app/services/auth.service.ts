@@ -50,7 +50,7 @@ export class AuthService {
     }
   }
 
-  getUserUid() {
+  getUserUid(): Promise<string>{
     return new Promise((resolve, reject) => {
       this.angularFireAuth.onAuthStateChanged(function (user) {
         if (user) {

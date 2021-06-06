@@ -27,7 +27,7 @@ const routes: Routes = [
     {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
     {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
     {path:'horarios',component:HorariosComponent,canActivate:[AuthGuard]},
-    {path:'sacarTurno',component:SacarTurnoComponent,canActivate:[AuthGuard]}
+    {path:'sacarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]}
   ]},
   {path:'verificacion',component:VerificacionCuentaComponent},
 ];

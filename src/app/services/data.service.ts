@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { Profesional } from '../models/models.module';
+import { Profesional, Usuario } from '../models/models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,19 @@ export class DataService {
 
   getUserByUid(uid: string) {
     return this.dbUsersRef.doc(uid).valueChanges();
+  }
+
+  getUser(uid: string): Promise<Usuario>{
+    return new Promise(async (resolve,reject) => {
+
+      try{
+        const user = await this.dbUsersRef.doc(uid).ref.get();
+        resolve(user.data() as Usuario);
+      }catch(err){
+        reject(err);
+      }
+
+    });
   }
 
   async getProfesionales(especialidad:string)
@@ -64,5 +77,66 @@ export class DataService {
       turnos.push(x.data());
     }); 
     return turnos;
+  }
+
+  async getMedicos(){
+    return new Promise(async (resolve,reject) => {
+
+      try{
+        const medicos = await this.dbUsersRef.ref.where("rol", "==", "profesional").get();
+        
+        resolve(this.transformData(medicos));
+      }catch(err){
+        reject(err);
+      }
+    });
+  }
+
+  async getMedico(uid: string): Promise<Profesional>{
+    return new Promise(async (resolve,reject) => {
+      try{
+
+        const medico = await this.dbUsersRef.doc(uid).ref.get();
+
+        resolve(medico.data() as Profesional);
+      }catch(err){
+        reject(err);
+      }
+    });
+  }
+
+  transformData(med: any){
+    let arr = []
+
+    med.forEach(x => {
+      const m = x.data();
+      if(m.especialidades.length > 0 ){
+        let medicosTransform = [];
+        m.especialidades.forEach(a => {
+          console.log(a);
+          medicosTransform.push({
+            img1: m.img1,
+            nombre: m.nombre,
+            apellido: m.apellido,
+            especialidad: a,
+            uid: m.uid
+          });
+        })
+
+        arr = arr.concat(medicosTransform);
+      }else{
+        arr.push({
+          img1: m.img1,
+          nombre: m.nombre,
+          apellido: m.apellido,
+          especialidad: m.especialidades[0],
+          uid: m.uid
+        });
+      }
+
+      
+    });
+
+    return arr;
   }
 }

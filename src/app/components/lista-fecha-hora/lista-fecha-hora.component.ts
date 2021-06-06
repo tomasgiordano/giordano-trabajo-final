@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-
 @Component({
   selector: 'app-lista-fecha-hora',
   templateUrl: './lista-fecha-hora.component.html',
@@ -20,7 +19,6 @@ export class ListaFechaHoraComponent implements OnInit {
 
   seleccionarFecha(dato:any)
   {  
-     this.enventoFecha.emit(dato);
+    this.enventoFecha.emit(dato);
   }
-
 }

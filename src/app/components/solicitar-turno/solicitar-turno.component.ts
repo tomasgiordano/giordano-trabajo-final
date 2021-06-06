@@ -3,8 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Profesional, Turnos, Usuario } from 'src/app/models/models.module';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from "../../services/auth.service";
- 
-
 
 @Component({
   selector: 'app-solicitar-turno',
@@ -14,169 +12,198 @@ import { AuthService } from "../../services/auth.service";
 })
 export class SolicitarTurnoComponent implements OnInit {
 
-  
-  usuario:any = new Usuario();
-
-  especialidades:Array<any> = new Array<any>();
-  lista:Array<any>;
+  medicos: Array<any> = [];
   turno:Turnos = new Turnos();
-  prefesionales:any = new Profesional();
-  horas:Array<any> = [];
+  turnosDisponibles:Array<any>;
+  usuario:any = new Usuario();
+  mostrarModalDetalle: boolean;
 
-  constructor(private auth:AuthService, private data:DataService, private toastr:ToastrService ) { }
+  constructor(private data: DataService,private auth:AuthService) {
+    this.data.getMedicos()
+        .then((data: [])=> this.medicos = data)
+        .catch(console.error)
+        .finally(() => console.log(this.medicos));
+  }
  
 
-  Entrar(){  
-    
+  async ngOnInit(): Promise<void> {
+    try{
+      var uid = await this.auth.getUserUid();
+      this.usuario = await this.data.getUser(uid);
+      console.log(this.usuario);
+    }catch(err){
+      console.error(err);
+    }
+
+    // this.auth.getUserUid().then(res =>{
+    //   uid = res.toString();
+    //   this.data.getUserByUid(uid)
+    //      .subscribe(res => {
+    //        this.usuario = res as Usuario;
+    //      })
+    // }).catch(res =>{
+    //  uid = res.toString();
+    //  console.log("Sin Usuario");
+    // });
+  }
+  
+  async onSelect(med: any){
+    this.turno.profesional = await this.data.getMedico(med.uid);
+    this.turnosDisponibles = new Array<any>();
+    this.turno.especialidad = med.especialidad;
+    this.Fechas();
+  }
+
+  tomarFechaHora(evento:any)
+  { 
+    this.turno.fecha = evento.fecha;
+    this.turno.hora = evento.hora;
     this.turno.paciente = this.usuario;
+    console.log(this.turno);
+    this.mostrarModalDetalle = true;
+    console.log(this.turno.fecha + ' ' + this.turno.hora);
+  }
+
+  cerrarModalDetalle(dato: any) {
+    this.mostrarModalDetalle = dato;
+  }
   
-     console.info(this.turno);
-    if(this.validacion())
-    {
-      console.info(this.turno);
-      this.auth.registerTurnos(this.turno).then(res=>{
-        console.log("Guarda bien el turno");
-        this.toastr.success("Turno Guardado con Éxito");
-      }).catch(error =>{
-        console.log("Pincho el turno pa");
-        console.info(error);
-      })
-
-    }
-     
-  }
-
-  cargarEspecialidades(){
-
-    this.lista = (this.especialidades.filter(res => res.completed == true )).map(res => res.name);
-    console.info(this.lista);
-  }
-  myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0 ;
-  }
-
-  ngOnInit(): void {
-
-      this.data.getEspecialidades().subscribe( res =>{
-            res.forEach(item =>{
-              
-              let objet = {name: item.nombre, completed: false, color: 'primary'} 
-
-              this.especialidades.push(objet);
-                
-            })
-
-            console.info(this.especialidades);
-      }) 
-      var uid="0";
-     this.auth.getUserUid().then(res =>{
-       uid = res.toString();
-       this.data.getUserByUid(uid)
-          .subscribe(res => {
-            this.usuario = res;
-            console.info(this.usuario);
-          })
-     }).catch(res =>{
-      uid = res.toString();
-      console.log("Sin Usuario");
-     });
-
-    // this.data.getProfesionales("Kinesiología");
-
-  }
-  validacion()
+  transformFech(fecha:string)
   {  
-    if(this.turno.paciente.nombre != null && this.turno.paciente.apellido !=null && this.turno.paciente.email !=null && this.turno.paciente.dni !=null && this.turno.hora !=null && this.turno.fecha !=null && this.turno.especialidad !=null)
+    let dia;
+    switch(fecha)
     {
-       return true;
-    }
-    else
-    { 
-      this.toastr.error("Datos incompletos o inválidos", "ERROR");
-      return false;
-    }
+        case "Lunes":
+           dia = 1;
+        break;
+        case "Martes":
+         dia = 2; 
+        break;
+
+        case "Miércoles":
+          dia = 3; 
+        break;
+
+        case "Jueves":
+          dia = 5; 
+        break;
+
+        case "Viernes":
+          dia = 5; 
+        break;
+
+        case "Sábado":
+          dia = 6; 
+        break;
+    } 
+    return dia;
+  }  
+
+  ExisteTurno(fecha:string,hora:any,num:number,dia:string,mes:number)
+  { 
+     let turnosDisponibles = [];
+     this.data.TurnoFecha(fecha,hora).then(res =>{
+        turnosDisponibles = res;
+        if(turnosDisponibles.length == 0)
+        { 
+          this.turnosDisponibles.push({fecha:fecha,hora:hora,numero:num,nombre:dia,mes:mes+1});
+        }
+      })  
+  }
+
+  OrdenarLista()
+  {
+    for (let index = 0; index < this.turnosDisponibles.length; index++) {
+      
+      let element = this.turnosDisponibles[index].numero;
+      let siguiente = this.turnosDisponibles[index+1].numero;
+      let aux=0;
   
+      if(element>siguiente)
+      {
+        aux = this.turnosDisponibles[index];
+        this.turnosDisponibles[index] =  this.turnosDisponibles[index+1];
+        this.turnosDisponibles[index+1] = this.turnosDisponibles[index];
+      }
+      
+    }
   }
 
-  cargarProfesionales()
-  {    
-    this.horas = [];
-    this.turno.fecha = undefined;
-     this.data.getProfesionales(this.turno.especialidad).then(res =>{
-         console.log(this.turno.especialidad);
-        if(res.length > 0)
-        {
-        this.prefesionales = res;
-        console.info(this.prefesionales);
-        }
-        else
-        {
-          this.prefesionales = ["No hay ningun especialista"];
-        }
-     })
-  }
-
-  cargarHora()
+  Fechas()
   {
     
-    this.horas = [];
+    let day = new Date();
+    let turnosDisponibles = [];
+    //let horas = [];
+
+    this.turno.profesional.atencion.forEach(element => {
+       
+    let dia = this.transformFech(element.dia);
+    let dif = day.getDay() - dia;
     
-    let date = new Date(this.turno.fecha);
-    let dia="";
-    let dias=[];
-    console.info();
-    switch(date.getDay())
-    {
-      case 0:
-        dia = "Lunes";
-        break;
-      case 1:
-         dia = "Martes";
-        break;
-      case 2:
-        dia = "Miércoles";
+    let fecha:Date = new Date();
+    
+    if(dif > 0)
+    { 
+      fecha.setDate(fecha.getDate() - dif);
 
-        break;
-      case 3:
-        dia = "Jueves";
-        
-        break;
-      case 4:
-        dia = "Viernes";
-
-        break;
-      case 5:
-        dia = "Sábado";
-        
-        break;
-      case 6:
-        dia = "Domingo";
-
-        break;
-    }
-   // this.horas = this.turno.profesional.atencion.map(function(x){return x.hora});
-   console.log(dia);
-    dias = this.turno.profesional.atencion.filter(function(x){return x.dia == dia})
-    if(dias.length>0)
-    {
-       this.horas = dias.map(function(x){return x.hora});
-       console.info(this.horas);
+      
     }
     else
-    {
-      this.toastr.warning("El profesional no atiende el dia de la semana indicado");
+    {  
+      if(dif<0)
+      {
+        
+        fecha.setDate(fecha.getDate() - dif);
+        
+      }
     }
+    if(dif <1)
+    {
+      let fe  = this.parserFecha(fecha);
+      this.ExisteTurno(fe,element.hora,fecha.getDate(),element.dia,fecha.getMonth());
+
+    }
+    let semana:Date = new Date();
+     
+   for (let i = 1; i < 4; i++) {
+     semana.setDate(fecha.getDate()+7*i);
+     let sem = this.parserFecha(semana)
+     this.ExisteTurno(sem,element.hora,semana.getDate(),element.dia,semana.getMonth());
+     
+   }
+  
+   
+    
+        // turnosDisponibles.push({fecha:fecha,hora:element.hora});
+    
+   // console.info(turnosDisponibles);
+
+    });
+
+    
+
   }
 
+  parserFecha(fecha:Date)
+  {
+    let dia = fecha.getDate();
+    let mes = fecha.getMonth()+1;
+    let anio = fecha.getFullYear() ;
+  //  let feche = dia + "-" + mes + "-" + anio;
+  let feche;
+  if(dia>9)
+  {
+     feche = anio + "-" + mes + "-" + dia;
 
+  }
+  else
+  {
+     feche = anio + "-" + mes + "-" + "0"+dia;
 
-
+  }
+    
+    return feche;
    
- 
-
-  
-
-
+  }
 }

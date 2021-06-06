@@ -71,6 +71,8 @@ import { VerificacionCuentaComponent } from './components/verificacion-cuenta/ve
 import * as firebase from 'firebase';
 import { ProfesionalHoraComponent } from './components/profesional-hora/profesional-hora.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { ListaMedicosComponent } from './components/lista-medicos/lista-medicos.component';
+import { ConfirmarTurnoComponent } from './components/confirmar-turno/confirmar-turno.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +107,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     SortTurnosPipe,
     VerificacionCuentaComponent,
     ProfesionalHoraComponent,
+    ListaMedicosComponent,
+    ConfirmarTurnoComponent,
   ],
   imports: [
     BrowserModule,

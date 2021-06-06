@@ -39,8 +39,8 @@ export class SacarTurnoComponent implements OnInit {
     var uid="0";
     this.auth.getUserUid().then(res =>{
       uid = res.toString();
-      this.data.getUserByUid(uid)
-         .subscribe(res => {
+      this.data.getUser(uid)
+         .then(res => {
            this.usuario = res;
            console.info(this.usuario);
          })
@@ -77,19 +77,14 @@ export class SacarTurnoComponent implements OnInit {
   }
 
   Entrar(){  
-    
     this.turno.paciente = this.usuario;
 
       this.auth.registerTurnos(this.turno).then(res=>{
         console.log("Guarda bien el turno");
         this.toastr.success("Turno Guardado con Éxito");
       }).catch(error =>{
-        console.log("Pincho el turno pa");
         console.info(error);
       })
-
-    
-     
   }
    
   get nombre() {​​ return this.firstFormGroup.get('firstCtrl'); }
@@ -137,8 +132,7 @@ export class SacarTurnoComponent implements OnInit {
   cargarProfesionales(dato:string)
   { 
 
-    this.data.getProfesionales(dato).then(res =>{
-        
+    this.data.getProfesionales(dato).then(res =>{     
   
       if(res.length > 0)
       { 
