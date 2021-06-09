@@ -31,7 +31,6 @@ export class ConfirmarTurnoComponent implements OnInit {
 
   cerrar() 
   { 
-    
     this.eventoMostrarModal.emit(false);
   }
 }

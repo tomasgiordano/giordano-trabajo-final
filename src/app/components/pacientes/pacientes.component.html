@@ -1,0 +1,17 @@
+<div class="contenedor">
+    <mat-card class="container">
+        <div class="formTurno">
+            <div class="side">
+                <div class="list">
+                    <h1 style="color: white;">SELECCIONE UN PACIENTE</h1>
+                    <app-lista-pacientes [listado]="pacientes" (enventoPaciente)="onSelect($event)"></app-lista-pacientes>
+                </div>
+            </div>
+            <div class="main">
+                <div *ngIf="selected">
+                    <app-turnos-list-pacientes [usuarioSeleccionado]="usuario"></app-turnos-list-pacientes>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div> 

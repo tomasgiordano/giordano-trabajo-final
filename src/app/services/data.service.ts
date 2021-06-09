@@ -40,8 +40,43 @@ export class DataService {
       }catch(err){
         reject(err);
       }
-
     });
+  }
+
+  async getTurnoPacientes(uid:string)
+  {
+    try{
+      const turnosRef = await this.dbTurnosRef.ref.where("profesional.uid", "==", uid).get();
+      const pacientes = turnosRef.docs.map(t => {
+        const ret =  t.data();
+        
+        return{
+          ...ret.paciente
+        };
+      });
+
+      return this.filterRepeated(pacientes);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  filterRepeated(arr: Array<any>): Array<any>{
+    let count: number;
+    let ret: Array<any> = [];
+    for(let i = 0; i < arr.length; i++){
+      count = 0;
+      for(let j = 0; j <= i; j ++){
+        if(arr[i].uid === arr[j].uid){
+          count++;
+        }
+      }
+      if(count == 1){
+        ret.push(arr[i]);
+      }
+    }
+
+    return ret;
   }
 
   async getProfesionales(especialidad:string)

@@ -1,12 +1,4 @@
-<mat-toolbar style="background-color: #306881; color: white;" class="expanded-toolbar">
-    <img style="height: 3rem; width: 3rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/fondo.jpg" alt="">
-      Listado de Turnos
-      <div class="atras">
-        <a style="color: aliceblue;" class="nav-link" href="javascript: history.go(-1)" tabindex="-1" aria-disabled="true" title="Atrás"
-        >
-        <i class="fa fa-sign-out"></i>
-       </a>
-      </div>
+<mat-toolbar class="expanded-toolbar">
   </mat-toolbar>
  
 <div class="buscador">
@@ -66,8 +58,6 @@
               <button *ngIf="usuario.rol == 'profesional' && turno.estado == 0" (click)="aceptar(turno)" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
               <button  *ngIf="usuario.rol == 'profesional'  && turno.estado == 0" class="btn btn-danger" (click)="rechazar(turno)" >Rechazar</button>
               <button *ngIf="usuario.rol == 'profesional' && turno.estado == 1 " class="btn btn-danger" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
-              
-
             </td>
           </tr>     
         

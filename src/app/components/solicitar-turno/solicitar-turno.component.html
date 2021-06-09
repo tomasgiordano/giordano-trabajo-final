@@ -3,13 +3,12 @@
         <div class="formTurno">
             <div class="side">
                 <div class="list">
-                  <h1 style="color: white;">SELECCIONE UN PROFESIONAL</h1>
+                <h1 style="color: white;">SELECCIONE UN PROFESIONAL</h1>
                     <app-lista-profesionales [listado]="medicos" (enventoProfesional)="onSelect($event)"></app-lista-profesionales>
                 </div>
             </div>     
             <div class="main">
               <div *ngIf="this.turnosDisponibles != null || this.turnosDisponibles != undefined"><h1 style="color: white;">SELECCIONE UN TURNO</h1></div>
-              
                 <div class="list">
                     <app-lista-fecha-hora *ngIf="turnosDisponibles" [profesional]="turno.profesional.apellido" [listado]="turnosDisponibles" (enventoFecha)="tomarFechaHora($event)" ></app-lista-fecha-hora>
                 </div>

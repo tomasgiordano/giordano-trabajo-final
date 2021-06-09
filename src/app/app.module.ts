@@ -73,6 +73,9 @@ import { ProfesionalHoraComponent } from './components/profesional-hora/profesio
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ListaMedicosComponent } from './components/lista-medicos/lista-medicos.component';
 import { ConfirmarTurnoComponent } from './components/confirmar-turno/confirmar-turno.component';
+import { PacientesComponent } from './components/pacientes/pacientes.component';
+import { ListaPacientesComponent } from './components/lista-pacientes/lista-pacientes.component';
+import { TurnosListPacientesComponent } from './components/turnos-list-pacientes/turnos-list-pacientes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,6 +112,9 @@ import { ConfirmarTurnoComponent } from './components/confirmar-turno/confirmar-
     ProfesionalHoraComponent,
     ListaMedicosComponent,
     ConfirmarTurnoComponent,
+    PacientesComponent,
+    ListaPacientesComponent,
+    TurnosListPacientesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<div *ngFor="let paciente of listado" (click)="seleccionarPaciente(paciente)" style="float:left">
+    <div class="container">
+      <img [src]="paciente.img1" alt="" width="75" height="75"class="imgRedonda">
+      <p class="text">{{paciente.apellido}}</p> 
+      <p class="text">{{paciente.nombre}}</p>
+  </div>
+</div>

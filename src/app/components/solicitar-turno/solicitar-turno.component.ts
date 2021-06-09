@@ -34,17 +34,6 @@ export class SolicitarTurnoComponent implements OnInit {
     }catch(err){
       console.error(err);
     }
-
-    // this.auth.getUserUid().then(res =>{
-    //   uid = res.toString();
-    //   this.data.getUserByUid(uid)
-    //      .subscribe(res => {
-    //        this.usuario = res as Usuario;
-    //      })
-    // }).catch(res =>{
-    //  uid = res.toString();
-    //  console.log("Sin Usuario");
-    // });
   }
   
   async onSelect(med: any){
@@ -74,10 +63,10 @@ export class SolicitarTurnoComponent implements OnInit {
     switch(fecha)
     {
         case "Lunes":
-           dia = 1;
+          dia = 1;
         break;
         case "Martes":
-         dia = 2; 
+          dia = 2; 
         break;
 
         case "Miércoles":
@@ -101,8 +90,8 @@ export class SolicitarTurnoComponent implements OnInit {
 
   ExisteTurno(fecha:string,hora:any,num:number,dia:string,mes:number)
   { 
-     let turnosDisponibles = [];
-     this.data.TurnoFecha(fecha,hora).then(res =>{
+    let turnosDisponibles = [];
+    this.data.TurnoFecha(fecha,hora).then(res =>{
         turnosDisponibles = res;
         if(turnosDisponibles.length == 0)
         { 
@@ -114,71 +103,57 @@ export class SolicitarTurnoComponent implements OnInit {
   OrdenarLista()
   {
     for (let index = 0; index < this.turnosDisponibles.length; index++) {
-      
       let element = this.turnosDisponibles[index].numero;
       let siguiente = this.turnosDisponibles[index+1].numero;
       let aux=0;
-  
+
       if(element>siguiente)
       {
         aux = this.turnosDisponibles[index];
         this.turnosDisponibles[index] =  this.turnosDisponibles[index+1];
         this.turnosDisponibles[index+1] = this.turnosDisponibles[index];
       }
-      
     }
   }
 
   Fechas()
   {
-    
     let day = new Date();
     let turnosDisponibles = [];
     //let horas = [];
 
     this.turno.profesional.atencion.forEach(element => {
-       
-    let dia = this.transformFech(element.dia);
-    let dif = day.getDay() - dia;
-    
-    let fecha:Date = new Date();
-    
-    if(dif > 0)
-    { 
-      fecha.setDate(fecha.getDate() - dif);
-
+      let dia = this.transformFech(element.dia);
+      let dif = day.getDay() - dia;
       
-    }
-    else
-    {  
-      if(dif<0)
-      {
-        
+      let fecha:Date = new Date();
+      
+      if(dif > 0)
+      { 
         fecha.setDate(fecha.getDate() - dif);
-        
       }
-    }
-    if(dif <1)
-    {
-      let fe  = this.parserFecha(fecha);
-      this.ExisteTurno(fe,element.hora,fecha.getDate(),element.dia,fecha.getMonth());
+      else
+      {  
+        if(dif<0)
+        {
+          
+          fecha.setDate(fecha.getDate() - dif);
+          
+        }
+      }
+      if(dif <1)
+      {
+        let fe  = this.parserFecha(fecha);
+        this.ExisteTurno(fe,element.hora,fecha.getDate(),element.dia,fecha.getMonth());
+      }
+      let semana:Date = new Date();
 
-    }
-    let semana:Date = new Date();
-     
-   for (let i = 1; i < 4; i++) {
-     semana.setDate(fecha.getDate()+7*i);
-     let sem = this.parserFecha(semana)
-     this.ExisteTurno(sem,element.hora,semana.getDate(),element.dia,semana.getMonth());
-     
-   }
-  
-   
-    
-        // turnosDisponibles.push({fecha:fecha,hora:element.hora});
-    
-   // console.info(turnosDisponibles);
-
+      for (let i = 1; i < 4; i++)
+      {
+        semana.setDate(fecha.getDate()+7*i);
+        let sem = this.parserFecha(semana)
+        this.ExisteTurno(sem,element.hora,semana.getDate(),element.dia,semana.getMonth());
+      }
     });
 
     
@@ -194,16 +169,12 @@ export class SolicitarTurnoComponent implements OnInit {
   let feche;
   if(dia>9)
   {
-     feche = anio + "-" + mes + "-" + dia;
-
+    feche = anio + "-" + mes + "-" + dia;
   }
   else
   {
-     feche = anio + "-" + mes + "-" + "0"+dia;
-
+    feche = anio + "-" + mes + "-" + "0"+dia;
   }
-    
     return feche;
-   
   }
 }

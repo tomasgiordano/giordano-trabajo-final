@@ -14,6 +14,7 @@ import { TurnosListComponent } from './components/turnos-list/turnos-list.compon
 import { HorariosComponent } from './components/horarios/horarios.component';
 import { SacarTurnoComponent } from './components/sacar-turno/sacar-turno.component';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
+import { PacientesComponent } from './components/pacientes/pacientes.component';
 
 const routes: Routes = [
   {path:'',component:BienvenidosComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path:'',component:InicioComponent,canActivate:[AuthGuard]},
     {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
     {path:'usuarios',component:ListaUsuariosComponent,canActivate:[AuthGuard]},
+    {path:'pacientes',component:PacientesComponent,canActivate:[AuthGuard]},
     {path:'solicitarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
     {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
     {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
