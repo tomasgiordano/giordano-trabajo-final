@@ -150,3 +150,18 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
   
 🔹 Elaboración del Readme.
   
+<h2> <strong>Tercer Sprint - 27/5<strong> </h2>
+
+🔹 Agrego seccion Mi Perfil
+  
+🔹 Sección Usuarios, para los Administradores
+  
+🔹 Agrego historia clinica a cada turno
+  
+<h2> <strong>Cuarto Sprint - 3/6<strong> </h2>
+  
+🔹 Agrego estadisticas a seccion Administrador.
+  
+🔹 Agrego descarga de Excel
+  
+🔹 Agrego descarga de PDF
