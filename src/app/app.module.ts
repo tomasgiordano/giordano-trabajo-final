@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BienvenidosComponent } from './page/bienvenidos/bienvenidos.component';
 import { LoginComponent } from './page/login/login.component';
 import { RegistroComponent } from './page/registro/registro.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 //Material
 import { CommonModule } from '@angular/common';
@@ -30,6 +30,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 //Firebase
 import { AngularFireModule, FirebaseApp } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
@@ -76,6 +77,7 @@ import { ConfirmarTurnoComponent } from './components/confirmar-turno/confirmar-
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { ListaPacientesComponent } from './components/lista-pacientes/lista-pacientes.component';
 import { TurnosListPacientesComponent } from './components/turnos-list-pacientes/turnos-list-pacientes.component';
+import { MiperfilComponent } from './page/miperfil/miperfil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +117,7 @@ import { TurnosListPacientesComponent } from './components/turnos-list-pacientes
     PacientesComponent,
     ListaPacientesComponent,
     TurnosListPacientesComponent,
+    MiperfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,6 +152,7 @@ import { TurnosListPacientesComponent } from './components/turnos-list-pacientes
       appId: "1:340700455440:web:941406c13cdc1beb422095",
       measurementId: "G-1X1DVX9K4M"
     }),
+    AngularFireAnalyticsModule,
     ToastrModule.forRoot(),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -158,7 +162,8 @@ import { TurnosListPacientesComponent } from './components/turnos-list-pacientes
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    BrowserModule,
   ],
   providers: [
     AngularFireAuth,

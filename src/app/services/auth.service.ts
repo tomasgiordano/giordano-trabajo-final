@@ -84,7 +84,7 @@ export class AuthService {
             .collection('usuarios')
             .doc(uid)
             .valueChanges()
-            .subscribe(({ rol, nombre, apellido, img1, estado }) => {
+            .subscribe(({ rol, nombre, apellido, img1, estado, dni, edad, obraSocial, email}) => {
               if (!estado) {
                 this.angularFireAuth.signOut();
                 this.toas.error('Usuario deshabilitado', 'Error');
@@ -95,6 +95,10 @@ export class AuthService {
               localStorage.setItem('nombre', nombre);
               localStorage.setItem('apellido', apellido);
               localStorage.setItem('img1', img1);
+              localStorage.setItem('dni', dni);
+              localStorage.setItem('edad', edad);
+              localStorage.setItem('obraSocial', obraSocial);
+              localStorage.setItem('email', email);
               resolve(user);
             });
         }else{

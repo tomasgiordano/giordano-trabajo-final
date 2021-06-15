@@ -17,6 +17,9 @@
                 <div>
                   <a mat-button *ngIf="rol == 'profesional'" [routerLink]="'pacientes'"><h1>Pacientes</h1></a>
                 </div>
+                <div>
+                  <a mat-button [routerLink]="'miperfil'"><h1>Mi Perfil</h1></a>
+                </div>
                 <div class="push">
                     <a mat-button (click)="logOut()">Cerrar Sesion</a>
                 </div>

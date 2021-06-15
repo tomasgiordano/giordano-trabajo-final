@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { Profesional, Usuario } from '../models/models.module';
+import { Profesional, Turnos, Usuario } from '../models/models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -135,6 +135,21 @@ export class DataService {
 
         resolve(medico.data() as Profesional);
       }catch(err){
+        reject(err);
+      }
+    });
+  }
+
+  async getTurnosPaciente(uid: string, especialidad: string): Promise<Array<Turnos>>{
+    let arrTurnos: Array<Turnos> = [];
+    return new Promise(async (resolve, reject) => {
+      try{
+        const turnos = await this.dbTurnosRef.ref.where('paciente.uid','==',uid).where('especialidad','==',especialidad).get();
+        turnos.forEach(a => {
+          arrTurnos.push(a.data());
+        });
+        resolve(arrTurnos);
+      }catch(err){ 
         reject(err);
       }
     });

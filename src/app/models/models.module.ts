@@ -82,4 +82,19 @@ export class Turnos{
     this.estado=0;
     this.comentario = "";
   }
+
+  get parserExcel(){
+    return {
+      id: this.id,
+      paciente: this.paciente.nombre + ' ' + this.paciente.apellido,
+      profesional: this.profesional.nombre + ' ' + this.profesional.apellido,
+      fecha: this.fecha,
+      hora: this.hora,
+      comentario: this.comentario,
+      especialidad: this.especialidad,
+      calificacionPaciente: this.calificacionPaciente,
+      opinionProfesional: this.opinionProfesional,
+      calificacionProfesional: this.calificacionProfesional
+    }
+  }
 }

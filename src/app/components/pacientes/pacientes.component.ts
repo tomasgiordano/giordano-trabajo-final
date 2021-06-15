@@ -25,7 +25,7 @@ export class PacientesComponent implements OnInit {
   }
 
   async onSelect(pac: any){
-    this.selected = false;//hice esto contra mi voluntad
+    this.selected = false; //hice esto contra mi voluntad
     this.usuario = await this.data.getMedico(pac.uid);
     this.selected = true;
     console.log(this.usuario);

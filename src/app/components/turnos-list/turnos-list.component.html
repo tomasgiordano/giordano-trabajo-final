@@ -4,6 +4,8 @@
 <div class="buscador">
   <input  class="form-control mr-sm-2 block" [(ngModel)]="escribir"  placeholder="Buscar" type="text" name="" id="">
 </div>
+
+
  <br>
  <mat-form-field style="margin-left: 2rem;" *ngIf="fitroSeleccionado == 'Adicionales'  && fitroSeleccionado != undefined " >
   <input matInput placeholder="descripcion" value="adicional" type="text" [(ngModel)]="adicional" >
@@ -64,6 +66,9 @@
         </tbody>
       </table>
       
+    </div>
+    <div *ngIf="usuario.rol == 'admin'" style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+      <button class="btn" (click)="toExcel()" style="background-color: green; color: white; margin-top: 1rem; margin-bottom: 1rem;">Descargar Excel Turnos de Pacientes</button>
     </div>
     <!-- <app-turno-detalle [user]="usuario" [turno]="turnoSeleccionado"(eventoMostrarModal)="mostrarEncuesta($event)"></app-turno-detalle> -->
     <app-modal-turno [cancelar]="cancelarPro" [rechazar]="rechazarPro" [user]="usuario" [turno]="turnoSeleccionado"[mostrar]="mostrarModal" (eventoMostrarModal)="mostrarEncuesta($event)" (eventoJustifacion)="justificacion($event)"></app-modal-turno>

@@ -7,14 +7,13 @@ import { HomeComponent } from './page/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AltaAdminComponent } from './page/alta-admin/alta-admin.component';
 import { InicioComponent } from './page/inicio/inicio.component';
-import { UsuariosComponent } from './page/usuarios/usuarios.component';
 import { ListaUsuariosComponent } from './page/lista-usuarios/lista-usuarios.component';
 import { SolicitarTurnoComponent } from './components/solicitar-turno/solicitar-turno.component';
 import { TurnosListComponent } from './components/turnos-list/turnos-list.component';
 import { HorariosComponent } from './components/horarios/horarios.component';
-import { SacarTurnoComponent } from './components/sacar-turno/sacar-turno.component';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
+import { MiperfilComponent } from './page/miperfil/miperfil.component';
 
 const routes: Routes = [
   {path:'',component:BienvenidosComponent},
@@ -29,7 +28,8 @@ const routes: Routes = [
     {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
     {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
     {path:'horarios',component:HorariosComponent,canActivate:[AuthGuard]},
-    {path:'sacarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]}
+    {path:'sacarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
+    {path:'miperfil',component:MiperfilComponent,canActivate:[AuthGuard]}
   ]},
   {path:'verificacion',component:VerificacionCuentaComponent},
 ];
