@@ -1,44 +1,41 @@
+<mat-paginator #paginator [length]="listado?.length== null? 0 : listado.length" [pageSizeOptions]="page_SizeOptions"
+  [pageSize]="page_size" (page)="handlePage($event)">
+</mat-paginator>
 
- <mat-paginator #paginator [length]="listado.length== null? 0 : listado.length" [pageSizeOptions]="page_SizeOptions" [pageSize]="page_size" (page)="handlePage($event)">
-</mat-paginator>   
-  
-    <table>
-      <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Apellido
-        </th>
-        <th>
-            Dni
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Estado
-        </th>
-      </tr>
-      <tr *ngFor="let item of listado|paginate:page_size:page_number">
-        <td>
-            {{item.nombre}}
-        </td>  
-        <td>
-            {{item.apellido}}
-        </td>
-        <td>
-            {{item.dni}}
-        </td>
-        <td>
-            {{item.email}}
-        </td>
-        <td>
-            <mat-checkbox 
-            *ngIf="item.accion"
-            [checked]="item.estado"
-            (click)="item.accion()">
-            </mat-checkbox>
-        </td>
-      </tr>
-    </table>
+<table>
+  <tr>
+    <th>
+      Nombre
+    </th>
+    <th>
+      Apellido
+    </th>
+    <th>
+      Dni
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Estado
+    </th>
+  </tr>
+  <tr *ngFor="let item of listado|paginate:page_size:page_number">
+    <td>
+      {{item.nombre}}
+    </td>
+    <td>
+      {{item.apellido}}
+    </td>
+    <td>
+      {{item.dni}}
+    </td>
+    <td>
+      {{item.email}}
+    </td>
+    <td>
+      <mat-checkbox *ngIf="item.accion" [checked]="item.estado" (click)="item.accion()">
+      </mat-checkbox>
+    </td>
+  </tr>
+</table>

@@ -14,20 +14,20 @@ import html2canvas from 'html2canvas';
 })
 export class MiperfilComponent implements OnInit {
 
-  rol: string;
-  nombre: string;
-  apellido: string;
-  img1: string;
-  edad: string;
-  email: string;
-  obraSocial: string;
-  dni: string;
-  usuario :any;
-  especialidades : any;
-  especialidadSeleccionada:string;
+  rol: string = '';
+  nombre: string = '';
+  apellido: string = '';
+  img1: string = '';
+  edad: string = '';
+  email: string = '';
+  obraSocial: string = '';
+  dni: string = '';
+  usuario: any;
+  especialidades: any;
+  especialidadSeleccionada: string;
   turnos: Array<Turnos>;
-  
-  constructor(private data: DataService,private auth: AuthService,private toast: ToastrService) { }
+
+  constructor(private data: DataService, private auth: AuthService, private toast: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -40,8 +40,7 @@ export class MiperfilComponent implements OnInit {
     this.obraSocial = localStorage.getItem('obraSocial');
     this.dni = localStorage.getItem('dni');
 
-    if(this.rol == 'admin')
-    {
+    if (this.rol == 'admin') {
       this.img1 == "../../../assets/login.png";
     }
 
@@ -59,34 +58,34 @@ export class MiperfilComponent implements OnInit {
         console.log('Sin Usuario');
       });
 
-     this.data.getEspecialidades().subscribe(a => {
-       this.especialidades = a;
-       console.log(a)
-      });
+    this.data.getEspecialidades().subscribe(a => {
+      this.especialidades = a;
+      console.log(a)
+    });
   }
 
-  toPDF(){
-let DATA = document.getElementById('htmlData');
-      
-    html2canvas(DATA).then(canvas => {     
+  toPDF() {
+    let DATA = document.getElementById('htmlData');
+
+    html2canvas(DATA).then(canvas => {
       let fileWidth = 208;
       let fileHeight = canvas.height * fileWidth / canvas.width;
-      
+
       const FILEURI = canvas.toDataURL('image/png')
       let PDF = new jsPDF('l', 'mm', 'a4');
       let position = -10;
       PDF.addImage(FILEURI, 'PNG', 5, position, fileWidth, fileHeight)
-        
-        PDF.save(`turnos-${this.especialidadSeleccionada}.pdf`);
-    });     
+
+      PDF.save(`turnos-${this.especialidadSeleccionada}.pdf`);
+    });
 
   }
 
-  async onChange(event){
-    try{
-      this.turnos = await this.data.getTurnosPaciente(this.usuario.uid,event);
+  async onChange(event) {
+    try {
+      this.turnos = await this.data.getTurnosPaciente(this.usuario.uid, event);
       console.log(this.turnos);
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
   }

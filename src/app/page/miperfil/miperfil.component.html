@@ -1,85 +1,90 @@
 <div class="contenedor">
-    <mat-card class="container">
-        <div class="formTurno">
-            <div class="foto ld ld-vortex-in" style="margin-left: auto;margin-right: auto;height: 100%;width: 100%;">
-                <img class="img" [src]="img1" width="250" height="250">
-            </div>
-            <div style="margin-left: auto;margin-right: auto;height: 100%;width: 100%; justify-content: center; margin-top: 30px;">
-                <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;">Nombre</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.nombre" name="nombre" disabled>
-                </mat-form-field>
-                <mat-form-field style="width: 20%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;">Apellido</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.apellido" name="Apellido" disabled>
-                </mat-form-field>
-                <br>
-                <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;">Perfil</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.rol" name="perfil" disabled>
-                </mat-form-field>
-                <mat-form-field style="width: 20%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;" >Obra Social</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.obraSocial" name="ObraSocial" disabled>
-                </mat-form-field>
-                <br>
-                <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;" >Edad</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.edad" name="edad" disabled>
-                </mat-form-field>
-                <mat-form-field style="width: 20%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;">Dni</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.dni" name="dni" disabled>
-                </mat-form-field>
-                <br>
-                <mat-form-field style="width: 40%; margin-right: 10%;" [style.fontSize.px] = 17>
-                    <mat-label  style="color: white;" >Mail</mat-label>
-                    <input  style="color: white;" matInput type="text" [(ngModel)]="this.email" name="email" disabled>
-                </mat-form-field>
-                <div *ngIf="usuario.rol == 'paciente'">
-                    <h4 style="color: white;">Seleccione Especialidad para descargar el historial</h4>
-                    <mat-form-field appearance="fill">
-                    <mat-label style="color: white;">Especialidad</mat-label>
-                    <mat-select [(ngModel)]="this.especialidadSeleccionada" (ngModelChange)="onChange($event)">
-                        <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad.nombre" style="color: #306881;">
-                        {{especialidad.nombre}}
-                        </mat-option>
-                    </mat-select>
-                    </mat-form-field>
-                    <div *ngIf="this.especialidadSeleccionada" style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-                        <button class="btn" (click)="toPDF()" style="background-color: red; color: white; margin-top: 1rem; margin-bottom: 1rem;">Descargar PDF de historial de turnos de {{this.especialidadSeleccionada}}</button>
+  <mat-card class="container">
+    <div class="formTurno">
+      <div class="foto ld ld-vortex-in" style="margin-left: auto;margin-right: auto;height: 100%;width: 100%;">
+        <img class="img" [src]="img1" width="250" height="250">
+      </div>
+      <div
+        style="margin-left: auto;margin-right: auto;height: 100%;width: 100%; justify-content: center; margin-top: 30px;">
+        <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Nombre</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.nombre" name="nombre" disabled>
+        </mat-form-field>
+        <mat-form-field style="width: 20%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Apellido</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.apellido" name="Apellido" disabled>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Perfil</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.rol" name="perfil" disabled>
+        </mat-form-field>
+        <mat-form-field style="width: 20%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Obra Social</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.obraSocial" name="ObraSocial" disabled>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 20%; margin-right: 10%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Edad</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.edad" name="edad" disabled>
+        </mat-form-field>
+        <mat-form-field style="width: 20%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Dni</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.dni" name="dni" disabled>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 40%; margin-right: 10%;" [style.fontSize.px]=17>
+          <mat-label style="color: white;">Mail</mat-label>
+          <input style="color: white;" matInput type="text" [(ngModel)]="this.email" name="email" disabled>
+        </mat-form-field>
+        <div *ngIf="usuario?.rol == 'paciente'">
+          <h4 style="color: white;">Seleccione Especialidad para descargar el historial</h4>
+          <mat-form-field appearance="fill">
+            <mat-label style="color: white;">Especialidad</mat-label>
+            <mat-select [(ngModel)]="this.especialidadSeleccionada" (ngModelChange)="onChange($event)">
+              <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad.nombre"
+                style="color: #306881;">
+                {{especialidad.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="this.especialidadSeleccionada"
+            style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+            <button class="btn" (click)="toPDF()"
+              style="background-color: red; color: white; margin-top: 1rem; margin-bottom: 1rem;">Descargar PDF de
+              historial de turnos de {{this.especialidadSeleccionada}}</button>
 
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </mat-card>
+      </div>
+    </div>
+  </mat-card>
 </div>
 
 <div class="container" id="htmlData" style="z-index:-1">
-    <h1>Lista de turnos {{especialidadSeleccionada}}</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr class="bg-primary" style="color: white;background-color: #306881;">
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Especialidad</th>
-            <th>Fecha de Turno</th>
-            <th>Hora</th>
-            <th>Profesional</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody >
-          <tr *ngFor="let turno of turnos" >
-            <td>{{turno.paciente.nombre}}</td>
-            <td>{{turno.paciente.apellido}}</td>
-            <td>{{turno.especialidad}}</td>
-            <td>{{turno.fecha |fecha}}</td>
-            <td>{{turno.hora}}</td>
-            <td>{{turno.profesional.apellido}}</td>
-            <td>{{turno.estado|estadoTurno}}</td>
-          </tr>     
-        </tbody>
-      </table>
-  </div>
+  <h1>Lista de turnos {{especialidadSeleccionada}}</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="bg-primary" style="color: white;background-color: #306881;">
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Especialidad</th>
+        <th>Fecha de Turno</th>
+        <th>Hora</th>
+        <th>Profesional</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of turnos">
+        <td>{{turno.paciente.nombre}}</td>
+        <td>{{turno.paciente.apellido}}</td>
+        <td>{{turno.especialidad}}</td>
+        <td>{{turno.fecha |fecha}}</td>
+        <td>{{turno.hora}}</td>
+        <td>{{turno.profesional.apellido}}</td>
+        <td>{{turno.estado|estadoTurno}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

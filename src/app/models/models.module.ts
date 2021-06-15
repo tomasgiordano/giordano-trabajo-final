@@ -10,46 +10,46 @@ import { StringifyOptions } from 'querystring';
 })
 export class ModelsModule { }
 
-export class Dinamicos{
- propiedad:string;
- valor:string;
+export class Dinamicos {
+  propiedad: string;
+  valor: string;
 
- constructor(prop:string,value:string){
-   this.propiedad = prop;
-   this.valor = value;
- }
+  constructor(prop: string, value: string) {
+    this.propiedad = prop;
+    this.valor = value;
+  }
 }
-export class Usuario{
+export class Usuario {
 
-  id:string;
-  tipo:string;
-  nombre:string;
-  apellido:string;
-  email:string;
-  edad:string;
-  obraSocial:string;
-  dni:string;
-  clave:string;
-  estado:number;
-  img1:string;
-  img2:string;
-  rol:string;
+  id: string;
+  tipo: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  edad: string;
+  obraSocial: string;
+  dni: string;
+  clave: string;
+  estado: number;
+  img1: string;
+  img2: string;
+  rol: string;
 
 }
-export class Profesional{
+export class Profesional {
 
-  uid:string;
-  tipo:string;
-  nombre:string;
-  apellido:string;
-  email:string;
-  dni:string;
-  estado:string;
-  img1:string;
-  especialidades:Array<any>;
-  atencion:Array<any>;
+  uid: string;
+  tipo: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  dni: string;
+  estado: string;
+  img1: string;
+  especialidades: Array<any>;
+  atencion: Array<any>;
 
-  constructor(){
+  constructor() {
     this.tipo = "profesional";
     this.nombre = "";
     this.apellido = "";
@@ -62,28 +62,27 @@ export class Profesional{
   }
 }
 
-export class Turnos{
-  
-  id:number;
-  paciente:Usuario;
-  profesional:Profesional = new Profesional();
-  fecha:Date; 
-  hora:Time;
-  estado:number;
-  comentario:string;
-  especialidad:string;
-  calificacionPaciente:number;
-  opinionPaciente:string;
-  opinionProfesional:string;
-  calificacionProfesional:number;
+export class Turnos {
 
-  constructor()
-  {
-    this.estado=0;
+  id: number;
+  paciente: Usuario;
+  profesional: Profesional = new Profesional();
+  fecha: Date;
+  hora: Time;
+  estado: number;
+  comentario: string;
+  especialidad: string;
+  calificacionPaciente: number;
+  opinionPaciente: string;
+  opinionProfesional: string;
+  calificacionProfesional: number;
+
+  constructor() {
+    this.estado = 0;
     this.comentario = "";
   }
 
-  get parserExcel(){
+  get parserExcel() {
     return {
       id: this.id,
       paciente: this.paciente.nombre + ' ' + this.paciente.apellido,
@@ -95,6 +94,29 @@ export class Turnos{
       calificacionPaciente: this.calificacionPaciente,
       opinionProfesional: this.opinionProfesional,
       calificacionProfesional: this.calificacionProfesional
+    }
+  }
+}
+
+export class Logger {
+
+  email: string;
+  fecha: string;
+  hora: string;
+
+  constructor(email: string) {
+    const date = new Date();
+
+    this.fecha = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    this.hora = `${date.getHours()}:${date.getMinutes()}`
+    this.email = email;
+  }
+
+  get toJSON() {
+    return {
+      email: this.email,
+      fecha: this.fecha,
+      hora: this.hora
     }
   }
 }

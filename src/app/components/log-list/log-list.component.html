@@ -1,0 +1,28 @@
+<mat-paginator #paginator [length]="listado?.length== null? 0 : listado.length" [pageSizeOptions]="page_SizeOptions"
+  [pageSize]="page_size" (page)="handlePage($event)">
+</mat-paginator>
+
+<table>
+  <tr>
+    <th>
+      Email
+    </th>
+    <th>
+      Fecha
+    </th>
+    <th>
+      Hora
+    </th>
+  </tr>
+  <tr *ngFor="let item of listado|paginate:page_size:page_number">
+    <td>
+      {{item.email}}
+    </td>
+    <td>
+      {{item.fecha}}
+    </td>
+    <td>
+      {{item.hora}}
+    </td>
+  </tr>
+</table>

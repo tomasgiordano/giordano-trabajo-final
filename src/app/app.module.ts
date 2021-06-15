@@ -7,26 +7,28 @@ import { BienvenidosComponent } from './page/bienvenidos/bienvenidos.component';
 import { LoginComponent } from './page/login/login.component';
 import { RegistroComponent } from './page/registro/registro.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartModule } from 'angular-highcharts';
+
 
 //Material
 import { CommonModule } from '@angular/common';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 //Firebase
 import { AngularFireModule, FirebaseApp } from '@angular/fire';
@@ -71,13 +73,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
 import * as firebase from 'firebase';
 import { ProfesionalHoraComponent } from './components/profesional-hora/profesional-hora.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ListaMedicosComponent } from './components/lista-medicos/lista-medicos.component';
 import { ConfirmarTurnoComponent } from './components/confirmar-turno/confirmar-turno.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { ListaPacientesComponent } from './components/lista-pacientes/lista-pacientes.component';
 import { TurnosListPacientesComponent } from './components/turnos-list-pacientes/turnos-list-pacientes.component';
 import { MiperfilComponent } from './page/miperfil/miperfil.component';
+import { EstadisticasComponent } from './page/estadisticas/estadisticas.component';
+import { LogListComponent } from './components/log-list/log-list.component';
+import { GraficosColumnaComponent } from './components/graficos-columna/graficos-columna.component';
+import { GraficosDiasComponent } from './components/graficos-dias/graficos-dias.component';
+import { GraficosTurnosSolicitadosComponent } from './components/graficos-turnos-solicitados/graficos-turnos-solicitados.component';
+import { GraficosTurnosFinalizadosComponent } from './components/graficos-turnos-finalizados/graficos-turnos-finalizados.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,6 +126,12 @@ import { MiperfilComponent } from './page/miperfil/miperfil.component';
     ListaPacientesComponent,
     TurnosListPacientesComponent,
     MiperfilComponent,
+    EstadisticasComponent,
+    LogListComponent,
+    GraficosColumnaComponent,
+    GraficosDiasComponent,
+    GraficosTurnosSolicitadosComponent,
+    GraficosTurnosFinalizadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -164,6 +178,8 @@ import { MiperfilComponent } from './page/miperfil/miperfil.component';
     ReactiveFormsModule,
     MatButtonToggleModule,
     BrowserModule,
+    ChartModule,
+
   ],
   providers: [
     AngularFireAuth,

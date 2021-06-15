@@ -14,24 +14,28 @@ import { HorariosComponent } from './components/horarios/horarios.component';
 import { VerificacionCuentaComponent } from './components/verificacion-cuenta/verificacion-cuenta.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { MiperfilComponent } from './page/miperfil/miperfil.component';
+import { EstadisticasComponent } from './page/estadisticas/estadisticas.component';
 
 const routes: Routes = [
-  {path:'',component:BienvenidosComponent},
-  {path:'login',component:LoginComponent},
-  {path:'registro',component:RegistroComponent},
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard],children:[
-    {path:'',component:InicioComponent,canActivate:[AuthGuard]},
-    {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
-    {path:'usuarios',component:ListaUsuariosComponent,canActivate:[AuthGuard]},
-    {path:'pacientes',component:PacientesComponent,canActivate:[AuthGuard]},
-    {path:'solicitarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
-    {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
-    {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
-    {path:'horarios',component:HorariosComponent,canActivate:[AuthGuard]},
-    {path:'sacarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
-    {path:'miperfil',component:MiperfilComponent,canActivate:[AuthGuard]}
-  ]},
-  {path:'verificacion',component:VerificacionCuentaComponent},
+  { path: '', component: BienvenidosComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  {
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
+      { path: '', component: InicioComponent, canActivate: [AuthGuard] },
+      { path: 'altaAdmin', component: AltaAdminComponent, canActivate: [AuthGuard] },
+      { path: 'estadisticas', component: EstadisticasComponent, canActivate: [AuthGuard] },
+      { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [AuthGuard] },
+      { path: 'pacientes', component: PacientesComponent, canActivate: [AuthGuard] },
+      { path: 'solicitarTurno', component: SolicitarTurnoComponent, canActivate: [AuthGuard] },
+      { path: 'listadoTurnos', component: TurnosListComponent, canActivate: [AuthGuard] },
+      { path: 'altaAdmin', component: AltaAdminComponent, canActivate: [AuthGuard] },
+      { path: 'horarios', component: HorariosComponent, canActivate: [AuthGuard] },
+      { path: 'sacarTurno', component: SolicitarTurnoComponent, canActivate: [AuthGuard] },
+      { path: 'miperfil', component: MiperfilComponent, canActivate: [AuthGuard] }
+    ]
+  },
+  { path: 'verificacion', component: VerificacionCuentaComponent },
 ];
 
 @NgModule({

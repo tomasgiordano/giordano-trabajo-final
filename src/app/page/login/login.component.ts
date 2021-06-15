@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../../services/auth.service";
+import { EstadisticasService } from '../../services/estadisticas.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,18 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  emailClass:'';
-  claveClass:'';
-  email:string;
-  clave:string;
+
+  emailClass: '';
+  claveClass: '';
+  email: string;
+  clave: string;
   recaptcha: '';
-  siteKey:string;
-  desa:boolean = false;
-  sitekey:string;
+  siteKey: string;
+  desa: boolean = false;
+  sitekey: string;
   formGroup: FormGroup;
 
-  constructor(private auth:AuthService,private formBuilder: FormBuilder) { 
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private stats: EstadisticasService) {
     this.siteKey = '6Le6rO8aAAAAACqYxNhdHrTwqzD0Yl2HGEpBqUF5'
   }
 
@@ -31,49 +32,44 @@ export class LoginComponent implements OnInit {
 
   usuarios: Array<any> = [
     { id: 0, nombre: "Administrador", correo: "castrocarlos313@gmail.com", clave: "123456" },
-    { id: 1, nombre: "Paciente", correo: "tomiigiordano@gmail.com", clave: "123456"},
-    { id: 2, nombre: "Profesional", correo: "tomasgiordano18@gmail.com", clave: "123456"}
-  ] 
+    { id: 1, nombre: "Paciente", correo: "tomiigiordano@gmail.com", clave: "123456" },
+    { id: 2, nombre: "Profesional", correo: "tomasgiordano18@gmail.com", clave: "123456" }
+  ]
 
-  onChange(id) 
-  {
+  onChange(id) {
     console.log("llega");
     console.info(this.usuarios[id].correo);
     this.email = this.usuarios[id].correo;
     this.clave = this.usuarios[id].clave;
   }
 
-  Entrar()
-  {
-    if(this.recaptcha!=''){
-      this.auth.login(this.email,this.clave).then( res=>{
+  Entrar() {
+    if (this.recaptcha != '') {
+      this.auth.login(this.email, this.clave).then(res => {
         console.log("se loguea");
-      
-      }).catch(error =>{
+        this.stats.logger(this.email);
+      }).catch(error => {
         console.log("anda");
       })
     }
 
   }
-  
+
   resolved(captchaResponse: any) {
     this.recaptcha = captchaResponse;
     console.log("captcha: " + this.recaptcha);
   }
 
-  
-  Paciente()
-  {
+
+  Paciente() {
     this.onChange(1);
   }
 
-  Medico()
-  {
+  Medico() {
     this.onChange(2);
   }
 
-  Admin()
-  {
+  Admin() {
     this.onChange(0);
   }
 }

@@ -1,0 +1,19 @@
+<div class="contenedor">
+  <mat-card class="container">
+    <h1 style="color:white;">Estadisticas</h1>
+    <div style="overflow-y: scroll; height: 90%;">
+      <app-log-list [listado]="log"></app-log-list>
+      <div *ngIf="estadisticas != null">
+        <app-graficos-columna [listado]="estadisticas.turnosEspecialidad"
+          [nombre]="'Cantidad de turnos por especialidad'"></app-graficos-columna>
+        <app-graficos-dias [listado]="estadisticas.turnosDias" [nombre]="'Cantidad de turnos por Dia'">
+        </app-graficos-dias>
+        <app-graficos-turnos-solicitados [listado]="estadisticas.turnosSolicitados"
+          [nombre]="'Cantidad de turnos solicitado por medico en un lapso de 7 dias'"></app-graficos-turnos-solicitados>
+        <app-graficos-turnos-finalizados [listado]="estadisticas.turnosFinalizados"
+          [nombre]="'Cantidad de turnos finalizados por medico en un lapso de 7 dias'">
+        </app-graficos-turnos-finalizados>
+      </div>
+    </div>
+  </mat-card>
+</div>
